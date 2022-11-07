@@ -22,5 +22,5 @@ z = sorted(list(z), key=cmp)
 url = "https://github.com/rjmags1/cp/blob/main/leetcode/"
 with open("./README.md", "w") as readme:
     for h, n in z:
-        anchor = f"<h6><a href={url + n}>{h}</a></h6><br/>"
+        anchor = f"<h6><a href={url + n}>{h}</a></h6>"
         readme.write(anchor)
