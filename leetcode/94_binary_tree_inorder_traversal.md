@@ -60,26 +60,18 @@ class Solution:
 # Space: O(n)
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        result, stack = [], [None]
-        curr = root
-        while curr:
-            if curr.left:
-                stack.append(curr)
-                curr = curr.left
+        result, stack = [], [(root, False)]
+        while stack:
+            curr, visited = stack.pop()
+            if curr is None:
                 continue
-            result.append(curr.val)
-            if curr.right:
-                curr = curr.right
-                continue
-                
-            while stack:
-                curr = stack.pop()
-                if curr is None:
-                    break
+            
+            if visited:
                 result.append(curr.val)
-                if curr.right:
-                    curr = curr.right
-                    break
+            else:
+                stack.append((curr.right, False))
+                stack.append((curr, True))
+                stack.append((curr.left, False))
         
         return result
 ```
