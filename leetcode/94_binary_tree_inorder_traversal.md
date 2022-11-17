@@ -77,4 +77,5 @@ class Solution:
 ```
 
 ## Notes
-- Non-trivial to iteratively imitate call stack behavior for a binary tree traversal, which is the main challenge to doing this problem iteratively.
+- Non-trivial to iteratively imitate call stack behavior for a binary tree traversal, which is the main challenge to doing this problem iteratively. There are other ways of doing this iteratively but this is by far the cleanest I have seen.
+- Pay particular attention to the order in which nodes get added to the stack in the `else` condition, which may seem wrong at first but remember that we are dealing with a `LIFO` data structure (stack).

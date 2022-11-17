@@ -73,4 +73,4 @@ WHERE customerId IS NULL;
 ```
 
 ## Notes
-- Left join to keep customer rows for which their is no corresponding order with their id.
+- Left join to keep customer rows for which there is no corresponding order with their id.

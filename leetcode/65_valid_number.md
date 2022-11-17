@@ -104,4 +104,5 @@ class Solution:
 
 ## Notes
 - For problems like these where we need to navigate between a finite set of states to determine an answer, we want to go with a DFA approach, and it is best to use the abstractions that yield the least amount of complexity in code.
+- This problem has one of the lowest acceptance rates on LC simply because of the large number of edge cases in the problem that are easy to miss.
 - This solution literally translates the requirements in the prompt into code by creating functional abstractions around the provided definitions of integer and decimal. The official DFA solution on leetcode uses lower level states like dot, digit, e, etc., and has a more complex state machine diagram that translates to less code for their official DFA approach, but is less idiomatic than above IMO.

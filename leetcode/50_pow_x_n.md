@@ -74,4 +74,4 @@ class Solution:
 ```
 
 ## Notes
-- This is the exact same logic as above, except implemented recursively. Used bitwise operators to be cool. As we loop, if `n` is odd, we multiply `result` by `curr` before squaring `curr`. This has the same effect as the `else` clause of the return statement in the `calc` function in Solution 1.
+- This is the exact same logic as above, except implemented iteratively. Used bitwise operator to check for odd parity to be cool but should also note that it is more time efficient. As we loop, if `n` is odd, we multiply `result` by `curr` before squaring `curr`. This has the same effect as the `else` clause of the return statement in the `calc` function in Solution 1, accumulating all odd parity sub-powers into `result`.

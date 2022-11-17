@@ -44,16 +44,15 @@ class Solution:
         idxs = {}
         result = start = 0
         for stop, c in enumerate(s):
-            if c in idxs:
+            # idx of duplicate c could be before or after current start
+            if c in idxs and idxs[c] >= start:
                 result = max(result, stop - start)
-                # idx of duplicate c could be before or after current start
-                start = max(start, idxs[c] + 1) 
+                start = idxs[c] + 1
             idxs[c] = stop
         
         return max(result, len(s) - start)
 ```
 
 ## Notes
-- This is a classic sliding window problem. A lot of people solve SW problems with `while` loops but `for` loop approach is cleaner IMO.
-- We avoid a second `O(n)` pass by storing most recently seen indices of encountered characters in a hash table, as opposed to using a set.
-- Be careful about reassigning `start` when a duplicate character is encountered; the current value of `start` could be greater than or less than the index of the previous instance of `c` + 1.
+- This is a classic sliding window problem. A lot of people solve SW problems with `while` loops but `for` preferable when possible.
+- We avoid a second `O(n)` pass by storing most recently seen indices of encountered characters in a hash table as opposed to using a set/inner loop to narrow the window. Notice the second part of the `if` statement that detects duplicate characters. Since we are using a hash table we need to be careful about only shrinking the window when `idxs[c]` is in the current window, since `idxs` will contain the most recently seen index of a character in `s`, regardless of if it is in the current window or not.

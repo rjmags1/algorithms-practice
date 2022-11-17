@@ -55,7 +55,7 @@ class Solution:
 ```
 
 ## Notes
-- Custom comparator. We always want numbers that will lead to a larger result to come first. Watch out for edge case where there are only zeroes in the input.
+- Insertion sort with custom comparator. We always want numbers that will lead to a larger result to come first. Watch out for edge case where there are only zeroes in the input.
 
 ## Solution 2
 
@@ -76,4 +76,4 @@ class Solution:
 ```
 
 ## Notes
-- More pythonic way of handling this using a custom key object with a method for comparing.
+- More "pythonic" way of handling this using a custom key object with a method for comparing.

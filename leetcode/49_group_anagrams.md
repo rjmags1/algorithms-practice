@@ -50,5 +50,4 @@ class Solution:
 ```
 
 ## Notes
--
--
+- Anagrams by definition have the same frequency of each character, with no absent characters. We can hash on character frequencies quite easily with Python tuples.

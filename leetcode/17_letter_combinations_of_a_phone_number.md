@@ -72,4 +72,4 @@ class Solution:
 ```
 
 ## Notes
-- Classic enumerative recursive problem using string building to avoid a bunch of O(n) string concats.
+- Enumerative recursive problem using string building to avoid a bunch of O(n) string concats.

@@ -77,7 +77,7 @@ class Solution:
 ```
 
 ## Notes
-- Since we know there are going to be at most 4 characters in a DNA sequence, we can use base 4 numbering system to compute hash keys in truly constant time. Could use mod to get rid of 11th base-4 digit from left but this will considerably slow runtime because mod not directly supported by hardware.
+- Since we know there are going to be at most 4 characters in a DNA sequence, we can use base 4 numbering system to compute hash keys in truly constant time. Could use mod to get rid of `11`th base-4 digit from left but this will considerably slow runtime because mod not directly supported by hardware.
 
 ## Solution 3
 
@@ -105,4 +105,4 @@ class Solution:
 ```
 
 ## Notes:
-- Can also just use a bitmask instead of bothering with non base-10 numbering systems. Just because we have more than `2` possibilities for each character doesn't mean we can't use a bitmask! We can just use as many bits as we need to represent each character, in this case `2` bits per character will do the trick, ie, `00` for `A`, `01` for `C`, `10` for `G`, `11` for `T`.
+- Can also just use a bitmask instead of bothering with non base-10 numbering systems. Just because we have more than `2` possibilities for each character doesn't mean we can't use a bitmask! We can just use as many bits as we need to represent each character, in this case `2` bits per character will do the trick, ie, `00` for `A`, `01` for `C`, `10` for `G`, `11` for `T`. In other words, every 2 bits in a 20-bit bitmask will represent one of the `4` possible letters.

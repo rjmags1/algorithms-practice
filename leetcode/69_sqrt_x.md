@@ -70,3 +70,4 @@ class Solution:
 
 ## Notes
 - Logarithmically search for result in search space for square root of `x`. Notice that the search space's upper limit is `x // 2`.
+- Also notice how the iteration condition for binary search includes when `l == r`. This allows simple handling of edge case where the last possible value for `mid` is greater than or less than a non-integer square root value of `x`.

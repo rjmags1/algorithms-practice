@@ -31,13 +31,13 @@ read4(buf4); // read4 returns 1. Now buf4 = "e", fp points to end of file
 read4(buf4); // read4 returns 0. Now buf4 = "", fp points to end of file
 ```
  
-Method read:
+Method `read`:
 
 By using the `read4` method, implement the method read that reads `n` characters from `file` and store it in the buffer array `buf`. Consider that you cannot manipulate `file` directly.
 
 The return value is the number of actual characters read.
 
-Definition of read:
+Definition of `read`:
 
 ```
     Parameters:	char[] buf, int n
@@ -46,7 +46,7 @@ Definition of read:
 buf[] is a destination, not a source. You will need to write the results to buf[].
 ```
 
-Note:
+##### Note:
 
 - Consider that you cannot manipulate the file directly. The file is only accessible for `read4` but not for `read`.
 - The read function may be called multiple times.

@@ -58,4 +58,4 @@ class Solution:
 ```
 
 ## Notes
-- Cannot do any search pruning since it is possible to have negative and possible node values in the same tree.
+- Cannot do any search pruning since it is possible to have negative and possible node values in the same tree. __It is important to be sure you don't accidentally eliminate valid results when attempting to implement search pruning.__

@@ -28,7 +28,7 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 - `1 <= prices.length <= 1000`
 - `0 <= prices[i] <= 1000`
 
-## Solution
+## Solution 1
 
 ```
 # Time: O(nk)
@@ -75,3 +75,30 @@ class Solution:
 - Ok so now the core logic of the algorithm. For each day with a given number of transactions at our disposal, we can either hold a stock or not hold a stock at the end of the day. We determine the max amount of money we can have if we hold or do not hold a stock for each day, for each transaction number in the range `[0, k]`. For `0` transactions we always have `0` money for not holding and since it is impossible to hold with `0` transactions we have `-inf` for holding. For other transaction numbers, we ignore days for which it is impossible to have commited the current transaction number of transactions. For the first considered day of a given allowed transaction number, the max not holding amount is always `0` and the max holding amount is always `-price` for that day because the only way to hold at the end of that first considered day is to buy the stock that day.
     - If we hold a stock at the end of the day it is either because we bought the stock that day, or we bought a stock a previous day and still hold it. If we bought the stock today, the amount of money we have left after buying it is equal to the amount of money we had on the previous day, if on that previous day we were not holding a stock (we are not allowed to engage in multiple transactions simultaneously) and still had a transaction left to use, minus the price of the stock today. 
     - If we do not hold a stock at the end of the day it is either because we sold stock that we held at the start of the day, or we simply haven't bought a stock yet since the last time we sold (if there was a last time we sold). If we sold stock today for the price of the day, the amount of money we have is equal to the amount we had the day before when we were holding the stock plus the price of the day. We do not have to worry about transaction numbers when selling because we only buy before we sell and we consider transaction numbers when we buy.
+
+## Solution 2
+
+```
+# Time: O(nk)
+# Space: O(n)
+class Solution:
+def maxProfit(self, k: int, prices: List[int]) -> int:
+    n = len(prices)
+    if 2 * k >= n:
+        return sum([prices[i] - prices[i - 1] for i in range(1, n) 
+                    if prices[i] > prices[i - 1]])
+    
+    prev = [0] * n
+    curr = prev[:]
+    for k in range(1, k + 1):
+        moneyafterbuying = -prices[0]
+        for i in range(1, n):
+            curr[i] = max(curr[i - 1], moneyafterbuying + prices[i])
+            moneyafterbuying = max(moneyafterbuying, prev[i - 1] - prices[i])
+        prev, curr = curr, prev
+    
+    return prev[-1]
+```
+
+## Notes
+- This solution is more general and can easily be applied to similar problems. The idea is that if we have more than `1` transaction at our disposal, to maximize our profit we would want to pick a buy-sell pair of prices such that their difference plus the max profit before the buy price is maximized. We can do this selection for each successive possible transaction from `[1, k]`.

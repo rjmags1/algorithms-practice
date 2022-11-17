@@ -10,6 +10,7 @@ Notice that you may not slant the container.
 
 ##### Example 1:
 
+<img src="../assets/11_containers.jpg" />
 ```
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
@@ -53,5 +54,5 @@ class Solution:
 ```
 
 ## Notes
-- Bottom up dp problem, where we start from the largest subrectangles formed by vertical lines and use two pointer outside in approach, moving the pointer to the smaller of the two elems. 
-- In other words, to solve the problem, we use fact that we can tell the amount of water that can fit inside a given subrectangle based on `dist`, `leftmax`, and `rightmax`, and iterate outside in, greedily. 
+- This is really a dp problem, that can be solved with two dp arrays that track, respectively, the largest height we have seen LTR and the largest height we have seen RTL. The constant space one-pass approach shown above is more greedy in nature and follows from the two array approach, observing that the only rectangles worth considering are the ones with the next biggest possible area and next biggest possible heights.
+- In other words, to solve the problem, we use fact that we can tell the amount of water that can fit inside a given subrectangle based on `dist`, `leftmax`, and `rightmax`, and iterate outside in in a greedy fashion.

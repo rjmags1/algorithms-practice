@@ -49,5 +49,4 @@ class Solution:
 ```
 
 ## Notes
--
--
+- A height balanced binary tree will have all of its subtrees height-balanced. So just check each subtree for height balance.

@@ -16,7 +16,6 @@ The algorithm for `myAtoi(string s)` is as follows:
 Only the space character `' '` is considered a whitespace character.
 Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
 
-
 ##### Example 1:
 
 ```
@@ -64,8 +63,6 @@ Step 3: "4193 with words" ("4193" is read in; reading stops because the next cha
 The parsed integer is 4193.
 Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
 ```
-
-
 
 ##### Constraints:
 
@@ -155,7 +152,6 @@ class Parser:
             self.state = self.DIGIT
         else:
             self.state = self.STOP
-        
             
 # Time: O(n)
 # Space: O(1)

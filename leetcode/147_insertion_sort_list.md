@@ -56,3 +56,4 @@ class Solution:
 
 ## Notes
 - Fairly simple, we just follow the directions in the prompt. Using a sentinel node greatly simplifies edge cases where an incoming node has a value less than the value of the head of the currently sorted sublist.
+- We don't need to worry about changing the order of the nodes in the original list, because this is an LL, not an array. Can just create a new sorted linked list to simplify the implementation.

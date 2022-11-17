@@ -70,4 +70,4 @@ class Solution:
 ```
 
 ## Notes
-- This solution skips to any `0` bits in between `1` bits. Consider `0b100100`, or `36` in decimal. `36 - 1 = 35` which is `0b100011`. Notice how the number less than the original number as all of the bits up and including the least significant one bit of the original number inverted. AND'ing the two numbers, as a result, flips off all the bits up to and including the least significant bit in one step. We can use this to skip irrelevant zero bits in between one bits instead iterating over them one by one as in the previous solution.
+- This solution skips to any `0` bits in between `1` bits. Consider `0b100100`, or `36` in decimal. `36 - 1 = 35` which is `0b100011`. Notice how the number `1` less than the original number has all of the bits up and including the least significant one bit of the original number inverted. AND'ing the two numbers, as a result, flips off all the bits up to and including the least significant bit in one step. We can use this to skip irrelevant zero bits in between one bits instead iterating over them one by one as in the previous solution.

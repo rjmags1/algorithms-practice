@@ -77,7 +77,7 @@ class Solution:
 ```
 
 ## Notes
-- Fairly straightforward bfs problem, the tricky part for newer algo people will be figuring out how to deal with TLE from naively checking every string against every other string for single character difference, which is <code>O(n<sup>2</sup> * k)</code>. The solution to this problem is using wildcards (`wc`) to remember which words are neighbors with each other in our graph, which is only <code>O(k<sup>2</sup> * n)</code> to build. This is not a typical way of tracking adjacency in a graph but works for this problem.
+- Fairly straightforward bfs problem, the tricky part for newer algo people will be figuring out how to deal with TLE from naively checking every string against every other string for single character difference, which is <code>O(n<sup>2</sup> * k)</code>. The solution to this problem is using wildcards (`wc`) to remember which words are neighbors with each other in our graph, which is only <code>O(k<sup>2</sup> * n)</code> to build. This is not a typical way of tracking adjacency in a graph but works for this problem. In general if graph construction is a slow step in terms of time complexity it is good to consider cheaper ways of performing that step so the main part of the algorithm is responsible for the upper bound on time complexity.
 - The reason I used sets to track current and next layers during bfs was to be able to look out for edges between nodes in the same layer, which is definitely possible in this kind of input.
 
 ## Solution 2

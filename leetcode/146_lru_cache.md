@@ -105,6 +105,7 @@ class LRUCache:
 
 ## Notes
 - We use a doubly-linked-list to achieve constant time `get` and `put` operations. The DLL allows us to easily shuffle k-v pairs in the cache in the way we need to to implement an LRU cache. That is, we need to be able to grab a k-v pair from the LRU queue and put it in the back every time it gets looked up or value reassigned.
+- Like many cases where we use auxiliary data structures to implement a main data structure, it is useful to implement the auxiliary as its own thing instead of intertwining its implementation with the thing it is being used to implement. It is less for the brain to keep track of and generally better to respect natural abstractions instead of fighting against them.
 
 ## Solution 2
 

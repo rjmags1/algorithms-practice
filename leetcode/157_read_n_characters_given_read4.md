@@ -10,7 +10,7 @@ The return value is the number of actual characters read.
 
 Note that `read4()` has its own file pointer, much like `FILE *fp` in C.
 
-Definition of read4:
+Definition of `read4`:
 
 ```
     Parameter:  char[] buf4

@@ -18,6 +18,7 @@ M             1000
 - `C` can be placed before `D` (500) and `M` (1000) to make `400` and `900`.
 
 Given a roman numeral, convert it to an integer.
+
 ##### Example 1:
 
 ```
@@ -46,7 +47,7 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 - `1 <= s.length <= 15`
 - `s` contains only the characters `('I', 'V', 'X', 'L', 'C', 'D', 'M')`.
-- It is guaranteed that s is a valid roman numeral in the range `[1, 3999]`.
+- It is guaranteed that `s` is a valid roman numeral in the range `[1, 3999]`.
 
 ## Solution 1
 ```
@@ -109,4 +110,4 @@ class Solution:
 ```
 
 ## Notes
-- Much cleaner because we use the fact that all two character special cases disrupt the otherwise non-ascending sorted order of `[values[i] for i in range(len(s))]`.
+- Much cleaner because we use the fact that all two character special cases disrupt the otherwise non-ascending sorted order of characters in a Roman numeral.

@@ -113,4 +113,4 @@ class Solution:
 ```
 
 ## Notes
-- We use a divide and conquer approach similar to 23. Merge K Sorted Lists, aka iterative merge sort. There are some optimizations that could be done to this solution to reduce the number of passes, particularly in the `mergeTwoSortedLLs` function, but it still works. Could also use a fast pointer technique to get the end of `prev2`, but this is a bit of a monster solution for a medium level question so not going to optimize further.
+- We use a divide and conquer approach similar to 23. Merge K Sorted Lists, aka iterative merge sort, but with constant space using `step` size. There are some optimizations that could be done to this solution to reduce the number of passes, particularly in the `mergeTwoSortedLLs` function, but it still works. Could also use a fast pointer technique to get the end of `prev2`, but this is a bit of a monster solution for a medium level question and the official solution on LC is only a few lines shorter and runs about the same time wise so not going to optimize further.

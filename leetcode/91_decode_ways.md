@@ -80,3 +80,4 @@ class Solution:
 
 ## Notes
 - Not too hard just need to walk through an example to not miss edge case where `20 <= s[-2:] <= 26`. Also notice how the only time the number of ways to decode increases for a particular index is if the previous character was a `0`/the current character is a `1` or a `2` and can be decoded into a double digit number `< 27`.
+- Notice how we only need the previous `2` subproblem results to resolve the current subproblem; this solution could be trivially optimized to run in constant space as a result.

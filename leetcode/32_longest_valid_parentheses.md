@@ -59,8 +59,8 @@ class Solution:
 ```
 
 ## Notes
-- Pretty intuitive dp solution, usually I stray away from dp if I can but for me it is the most intuitive approach for this problem.
-- Whenever we encounter a closing paren, there is a chance it is the end of a non-zero length well-formed paren substring. If the previous char was an opening paren, all we need to do is add 2 to the length of the longest well-formed paren substring before the opening paren that matches the current closing paren. If the previous char was another closing paren, the logic becomes considerably more complicated but still intuitive IMO. Essentially, we can determine the matching open paren position (if it exists) based on `dp[i - 1]`. If there is a matching open paren, we add 2 to dp[i - 1]. After that, we may need to add more to `dp[i]` if there was a well-formed paren substring before the matching opening paren of the current closing paren.
+- Pretty intuitive dp solution, I tend to stray away from dp if I can but for me it is the most intuitive approach for this problem.
+- Whenever we encounter a closing paren, there is a chance it is the end of a non-zero length well-formed paren substring. If the previous char was an opening paren, all we need to do is add 2 to the length of the longest well-formed paren substring before the opening paren that matches the current closing paren. If the previous char was another closing paren, the logic becomes considerably more complicated but still intuitive. Essentially, we can determine the matching open paren position (if it exists) based on `dp[i - 1]`. If there is a matching open paren, we add 2 to dp[i - 1]. After that, we may need to add more to `dp[i]` if there was a well-formed paren substring before the matching opening paren of the current closing paren.
 
 ## Solution 2
 

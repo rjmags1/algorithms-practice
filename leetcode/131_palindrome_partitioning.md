@@ -18,8 +18,8 @@ Output: [["a"]]
 
 ##### Constraints:
 
-- 1 <= s.length <= 16
-- s contains only lowercase English letters.
+- `1 <= s.length <= 16`
+- `s` contains only lowercase English letters.
 
 ## Solution
 
@@ -61,13 +61,13 @@ class Solution:
 
 ## Notes
 - This approach finds all palindromic substrings and then builds all possible partitions using them via backtracking.
-- The time complexity is <code>O(n * 2<sup>n</sup>)</code> because in the worst case with an input with all the same character i.e. `"aaaaa"`, all possible substrings are palindromes. In a case like this, for each character we have two choices: either add the character to the previous palindrome or treat the character as its own palindrome of length 1. This will result in a binary recursive call tree. See image below:
+- The time complexity is <code>O(n * 2<sup>n</sup>)</code> because in the worst case with an input with all the same character i.e. `"aaaaa"`, all possible substrings are palindromes. In a case like this, for each character we have two choices: either add the character to the previous palindrome or treat the character as its own palindrome of length `1`. This will result in a binary recursive call tree. See image below:
 <img src="../assets/131-call-tree.png" />
 
 ## Solution 2
 
 ```
-# Time: O(mn)
+# Time: O(n * 2^n)
 # Space: O(mn)
 class Solution:
     def partition(self, s: str) -> List[List[str]]:

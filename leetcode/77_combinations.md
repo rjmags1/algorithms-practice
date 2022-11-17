@@ -29,8 +29,8 @@ Explanation: There is 1 choose 1 = 1 total combination.
 ## Solution
 
 ```
-# Time: O(n!/((n - k)! * k!)) ("n choose k")
-# Space: O(n!/((n - k)! * k!))
+# Time: O(n!/((n - k)! * k!) * n) ("n choose k")
+# Space: O(n!/((n - k)! * k!) * n)
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         result, builder = [], []

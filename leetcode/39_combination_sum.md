@@ -65,4 +65,4 @@ class Solution:
 ```
 
 ## Notes
-- As the top LC comment says in solution section, this is another combination problem where deriving the complexity of the problem is more challenging than the problem itself. Still, not so bad. For each candidate, there will never be more than `t/m` recursive calls as we build a combination sum using that number. The exponent in problems involving n-ary recursive call trees is always the max recursive call depth.
+- For each candidate, there will never be more than `t/m` recursive calls as we build a combination sum using that number. The exponent in problems involving n-ary recursive call trees is always the max recursive call depth.

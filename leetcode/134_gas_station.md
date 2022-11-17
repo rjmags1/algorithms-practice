@@ -4,7 +4,7 @@ There are `n` gas stations along a circular route, where the amount of gas at th
 
 You have a car with an unlimited gas tank and it costs `cost[i]` of gas to travel from the `i`th station to its next `(i + 1)`th station. You begin the journey with an empty tank at one of the gas stations.
 
-Given two integer arrays `gas` and `cost`, return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return `-1`. If there exists a solution, it is guaranteed to be unique
+Given two integer arrays `gas` and `cost`, return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return `-1`. If there exists a solution, it is guaranteed to be unique.
 
 ##### Example 1:
 
@@ -71,7 +71,7 @@ class Solution:
 
 ## Notes
 - The logic behind this approach is making a round trip from an arbitrary starting station and observing the state of the gas tank as we go. When we do this, we want to keep an eye out for the lowest point the gas tank ever gets to after a station to station transition but before filling up again. After all this is the state we care about for answering this question - does it cost more gas than we currently have to get to the next station? 
-- If it is possible to make a round trip, this is the index we would want to start from. Why? It is not intuitive to most people (I didn't get it the first time I did this problem), but as long as the total gas is greater than or equal to the total cost, we will be able to make a round trip if we start at the point where the gas tank reaches its lowest, relatively speaking. 
+- If it is possible to make a round trip, this is the index we would want to start from. Why? It is not immediately intuitive, but as long as the total gas is greater than or equal to the total cost, we will be able to make a round trip if we start at the point where the gas tank reaches its lowest, relatively speaking. 
 - Graph out the arrival state of the gas tank for each index, but for different starting stations, and see for yourself. The relative state of the gas tank on arrival doesn't change compared to other stations, regardless of starting station. So if we start at the station with the lowest relative gas on arrival, this gives us the best chance of being able to make a round trip.
 
 ## Solution 2

@@ -60,3 +60,4 @@ class Solution:
 
 ## Notes
 - This is very similar to 102. Binary Tree Level Order Traversal. The only difference is every other row needs to have its node's values reversed in `result`. To achieve this, whenever the index of the row of parents we are adding to `result` is odd, we add that row's nodes to `result[-1]` in reverse order. We always add the children of the current `prev` to `curr` in LTR order, however.
+- This is more efficient than doing plain level-order traversal and then reversing every other list prior to returning - adding in reverse order straightaway helps us avoid extra level passes for reversing.

@@ -79,4 +79,4 @@ class Solution:
 ```
 
 ## Notes
-- We could do some tricks to get rid of the extra pass in the inner `while` loop, such as using indices in the inner `for` loop to check if the list of parents is palindromic, but this suffices. This is would be a level-order traversal of a binary tree, AKA BFS for a binary tree starting at `root`.
+- We could do some tricks to get rid of the extra pass in the inner `while` loop, such as using indices in the inner `for` loop to check if the list of parents is palindromic, but this suffices. This is level-order traversal of a binary tree, AKA BFS for a binary tree starting at `root`.

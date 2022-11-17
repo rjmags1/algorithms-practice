@@ -93,4 +93,4 @@ class Solution:
 ```
 
 ## Notes
-- This solution is similar to above but is more greedy in nature than specific to this particular problem. It relies on the fact that at any position in `nums`, we would always want to jump to the index in the range `[i + 1, i + nums[i]]` that allows us to move the furthest distance on the next jump. 
+- This solution is similar to above but is more greedy in nature than specific to this particular problem. It relies on the fact that at any position in `nums`, we would always want to jump to the index in the range `[i + 1, i + nums[i]]` that allows us to move the furthest distance on the next jump. This strategy guarantees that we will get to the indices included in the optimal path in the least amount of jumps.

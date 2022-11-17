@@ -53,5 +53,5 @@ class Solution:
 ```
 
 ## Notes
-- We sacrifice an `O(n) (n == len(strs))` pass to obtain the length of the shortest string in the array, which allows us to do vertical scanning.
+- We do an extra `O(n)` pass to obtain the length of the shortest string in the array, which allows us to do vertical scanning.
 - Vertical scanning is useful in a problem like this where every word in the input array must have the same prefix for a given prefix to be a valid answer. It allows us to avoid extra comparisons between two strings in the input that may have a longer common prefix than the answer.

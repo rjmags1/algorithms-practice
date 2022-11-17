@@ -58,4 +58,4 @@ WHERE temperature > (
 ```
 
 ## Notes
-- Could also use `DATEDIFF` on a self join.
+- Could also use `DATEDIFF` and/or self join.

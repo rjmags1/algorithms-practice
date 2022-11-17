@@ -72,8 +72,8 @@ class Solution:
 ```
 
 ## Notes
-- This problem is considerably trickier than 39. Combination Sum because it can have duplicate elements. If we had distinct elements this problem would be the same as 39. but with a few small modifications. 
-- The trick to not getting TLE on this problem is to avoid generating duplicate combinations that sum to target. This does not mean simply putting all combos in a set, including duplicates, and then transforming the set to a list before returning. This will cause TLE because the recursive call tree gets all the way down the base case for every single duplicated combo, and for an input such as `candidates = [1] * 50, target = 30`, this wastes a ton of time.
+- This problem is considerably trickier than 39. Combination Sum because it can have duplicate elements but are not allowed to return duplicate combinations. If we had distinct elements this problem would be the same as 39. but with a few small modifications. 
+- The trick to not getting TLE on this problem is to avoid generating duplicate combinations that sum to target. This does not mean simply putting all combos in a set, including duplicates, and then transforming the set to a list before returning. This will cause TLE because the recursive call tree gets all the way down the base case for every single duplicated combo, and for an input such as `candidates = [1] * 50, target = 30`, this will cause many redundant calculations.
 - To avoid generating duplicate combinations, we need to make sure that for any given duplicated element, there is only one recursive call made for each possible frequency of that element in the combination. In the above solution, we achieve this using python's `Counter` from the `collections` library.
 - The time complexity is <code>O(2<sup>n</sup>)</code> because in the worst case each element is distinct, and since we are dealing with combinations where each element can appear at most once, we get a binary recursive call tree of max depth `n`. The binary recursive call structure comes from the fact that we can either include a particular element, or we exclude it (2 choices).
 
@@ -108,5 +108,5 @@ class Solution:
 ```
 
 ## Notes
-- We do not need an auxiliary data structure (at least in the top level function that solves the problem) to avoid TLE; we can sort. Sorting will group all of the duplicate elements together, which allows us to avoid multiple recursive calls with a given frequency of a duplicated element.
+- We do not need an auxiliary data structure for monitoring duplicate elements frequencies to avoid TLE; we can sort. Sorting will group all of the duplicate elements together, which allows us to avoid multiple recursive calls with a given frequency of a duplicated element.
 - In the above solution, each grouped-together duplicate element is added to `builder` as the first instance of that element in a combo once. This avoids multiple recursive calls with a given frequency of a duplicated element. I.e., if our candidates looks like so: <code>[..., x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, ...]</code>, we would generate a single combo for each possible frequency of x, like so: <code>[..., x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, ...]</code>, <code>[..., x<sub>2</sub>, x<sub>3</sub>, ...]</code>, and <code>[..., x<sub>3</sub>, ...]</code> (so long as these combos do not exceed target).

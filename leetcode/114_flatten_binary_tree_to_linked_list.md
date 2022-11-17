@@ -74,5 +74,5 @@ class Solution:
 ```
 
 ## Notes
-- The first time I attempted this problem I overlooked the simple recurrence relation obvious in the example and tried to do figure out a Morris Traversal-esque approach. This was dumb. I think for whatever reason I am not comfortable yet with bottom up building of binary trees, but that is the approach for this problem.
+- The first time I attempted this problem I overlooked the simple recurrence relation obvious in the example and tried to do figure out a Morris Traversal-esque approach.
 - To flatten a binary tree as described in the prompt, all one needs to do is recursively flatten the left and right subtrees, and then point `node.right` to the head of the flattened left subtree, and then point the `tail.right` of the flattened left subtree to the head of the flattened right subtree. We also need to remember to set the `node.left` to `None` for every node in the tree.

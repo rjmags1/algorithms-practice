@@ -59,4 +59,4 @@ class Solution:
 ```
 
 ## Notes
-- The space and time complexities come from a non-trivial proof that is probably beyond the scope of an interview.
+- The space and time complexities come from a non-trivial proof that is beyond the scope of an interview.

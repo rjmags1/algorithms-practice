@@ -6,8 +6,6 @@ You may assume that each input would have exactly one solution, and you may not 
 
 You can return the answer in any order.
 
-
-
 ##### Example 1:
 
 ```
@@ -30,13 +28,11 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 ```
 
-
-
 ##### Constraints:
 
-- `2 <= nums.length <= 104`
-- `-109 <= nums[i] <= 109`
-- `-109 <= target <= 109`
+- <code>2 <= nums.length <= 10<sup>4</sup></code>
+- <code>-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup></code>
+- <code>-10<sup>9</sup> <= target <= 10<sup>9</sup></code>
 - Only one valid answer exists.
 
 
@@ -57,5 +53,6 @@ class Solution:
 ```
 
 ## Notes
-- Order matters because we are being asked to return indices. Otherwise, could achieve `O(log(n))` time, `O(1)` space with sorting and two pointer approach.
+- Order matters because we are being asked to return indices. Otherwise, could achieve `O(n * log(n))` time, `O(1)` space with sorting and two pointer approach.
+- Note how the check to see if a particular number is in `seen` occurs before the current number is added to `seen`. Otherwise we could accidentally return the same index twice if `2 * nums[i] == target`.
 - It is OK to overwrite hash table entries for a particular number if there are multiple instances of it in the array because the overwrite occurs after we check for `diff` in `seen`.

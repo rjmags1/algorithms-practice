@@ -54,7 +54,7 @@ class Solution:
 ```
 
 ## Notes
-- This solution is much harder than the following but is a good demonstration of more advanced stack techniques. We put indices on the stack, and only add to the stack when `height[i] <= height[i - 1]`. This allows us to determine how much water is trapped between heights in horizontal blocks of height == 1 when `height[i] > height[i - 1]` by popping off the stack.
+- This solution is much harder than the following but is a good demonstration of more advanced stack techniques. We put indices on the stack, and only add to the stack when `height[i] <= height[i - 1]`. This allows us to determine how much water is trapped between heights in horizontal blocks when `height[i] > height[i - 1]` by popping off the stack.
 
 ## Solution 2
 
@@ -81,5 +81,5 @@ class Solution:
 ```
 
 ## Notes
-- There are many other trapping water problems similar to this, and the optimal solution tends be the above because it allows us to solve in constant space. Classic dp solutions to these kinds of problems require linear space, and if solveable with a stack, that will require linear space as well.
+- There are many other trapping water problems similar to this, and the optimal solution tends be similar to the above because it allows us to solve in constant space. Classic dp solutions to these kinds of problems require linear space, and if solveable with a stack, that will require linear space as well.
 - The key to understanding this solution is realizing that for a given height, the amount of water we can trap in it is dependent on the highest heights to the left and right of it, inclusive of the height in question. More specifically, `trapped[i] = min(leftMax, rightMax) - height[i]`. We can always know the `leftMax` and `rightMax` for a given `height[i]` if we use a two-pointer approach and iterate from the outside in.

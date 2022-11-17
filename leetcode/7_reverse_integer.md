@@ -33,6 +33,8 @@ Output: 21
 
 ## Solution
 ```
+# Time: O(log(n))
+# Space: O(1)
 class Solution:
     def reverse(self, x: int) -> int:
         MAX_INT = 2 ** 31 - 1
@@ -59,4 +61,4 @@ class Solution:
 ```
 
 ## Notes
-- This question gets a lot of hate on LC but is good for learning about 32-bit vs. 64-bit integer environments, as well as how mod and floor can be used manipulate integers as though they were a stack.
+- This question gets a lot of hate on LC but is good for learning about 32-bit vs. 64-bit environments, as well as how mod and floor can be used to manipulate integers as though they were a stack. Take special note of how we avoid overflow in a 32-bit environment, as well as reducing edge cases with a `neg` flag and conversion to absolute value.

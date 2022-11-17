@@ -69,4 +69,4 @@ WHERE
 ```
 
 ## Notes
-- We can join a table to itself to more easily query for duplicate emails with id greater than the current row.
+- We can join a table to itself to more easily query for duplicate emails with id greater than the current row. Note how deleting from a self-join deletes from the underlying table.

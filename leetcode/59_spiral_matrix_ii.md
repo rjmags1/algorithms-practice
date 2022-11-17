@@ -57,5 +57,5 @@ class Solution:
 ```
 
 ## Notes
-- There are much more succinct solutions than this that take advantage of the result matrix having square dimensions, but this is very idiomatic IMO and easy to understand.
+- There are much more succinct solutions than this that take advantage of the result matrix having square dimensions, but this is very idiomatic IMO and easy to understand. Still, more succinct solutions involve iterating form `1` to <code>n<sup>2</sup></code> and changing direction as we go with some modular math and detection of OOB/previously filled cells to change direction.
 - Need to be careful to handle edge case where <code>n<sup>2</sup></code> is odd. In this case <code>n<sup>2</sup></code> will always need to be added to the center of the matrix manually after the main loop exits. This is analogous to the edge case in 56. Spiral Matrix where `m * n` is odd (where `m` and `n` are the dimensions of the input matrix for that problem), except in this case since we are dealing with square dimensions there will only ever be one more element to handle after exiting the main loop.

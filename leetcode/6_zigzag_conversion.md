@@ -16,7 +16,6 @@ Write the code that will take a string and make this conversion given a number o
 string convert(string s, int numRows);
 ```
 
-
 ##### Example 1:
 
 ```
@@ -43,8 +42,6 @@ Input: s = "A", numRows = 1
 Output: "A"
 ```
 
-
-
 ##### Constraints:
 
 - `1 <= s.length <= 1000`
@@ -53,7 +50,7 @@ Output: "A"
 
 ## Solution 1
 ```
-# Time: O(n)
+# Time: O(n + m)
 # Space: O(n + m)
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
@@ -75,7 +72,7 @@ class Solution:
 ```
 
 #### Notes
-- More intuitive IMO but not as space efficient as below... could have more rows than characters and end up allocating more empty row arrays than necessary.
+- More intuitive IMO but not as efficient as below... could have more rows than characters and end up allocating more empty row arrays than necessary.
 
 ## Solution 2
 ```

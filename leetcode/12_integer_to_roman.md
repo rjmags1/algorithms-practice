@@ -53,6 +53,8 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 ## Solution
 ```
+# Time: O(1)
+# Space: O(1)
 class Solution:
     def intToRoman(self, num: int) -> str:
         vals = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]

@@ -49,4 +49,5 @@ class Solution:
 ```
 
 ## Notes
+- Go pair by pair through the LL, swapping the pair order.
 - Be careful about advancing pointers after swapping `p1` and `p2`.

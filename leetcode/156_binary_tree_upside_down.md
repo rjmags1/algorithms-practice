@@ -12,6 +12,8 @@ The mentioned steps are done level by level. It is guaranteed that every right n
 
 ##### Example 1:
 
+<img src="../assets/156_sample.jpg" />
+
 ```
 Input: root = [1,2,3,4,5]
 Output: [4,5,2,null,null,3,1]
@@ -64,4 +66,4 @@ class Solution:
 ```
 
 ## Notes
-- We basically follow the directions in the prompt, except we need to be careful about a couple implied edge cases. We need to remember to unlink `node`'s pointers otherwise we will create cycles in the flipped tree. Also need to look out for left child leaf nodes!
+- We basically follow the directions in the prompt, except we need to be careful about a couple implied edge cases. This is easily done top-down based on drawing out/seeing a few examples. We need to remember to unlink `node`'s pointers otherwise we will create cycles in the flipped tree. Also need to look out for left child leaf nodes!

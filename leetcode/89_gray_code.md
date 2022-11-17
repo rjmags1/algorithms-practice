@@ -62,5 +62,5 @@ class Solution:
 ```
 
 ## Notes
-- This is one of those problems where to solve in an interview you need to have seen it before or are able to discern the pattern driving the optimal solution in a reasonable time frame. 
-- This solution takes advantage of the fact that the `n`th gray code sequence can be derived from the `n - 1`th gray code sequence. Consider `[0, 1]` for `n = 1`. We can derive the gray code sequence for `n = 2` by iterating over the gray code sequence of `n = 1` and (for even indices) left shift the element + `| 0` + append to the sequence for `n = 2`, left shift the element + `| 1` + append to the sequence for `n = 2`. Vice versa for odd indices.
+- This is one of those problems where to solve in an interview you need to have seen it before or are able to __discern the pattern__ driving the optimal solution in a reasonable time frame. 
+- This solution takes advantage of the fact that the `n`th gray code sequence can be derived from the `n - 1`th gray code sequence. Consider `[0, 1]` for `n = 1`. We can derive the gray code sequence for `n = 2` by iterating over the gray code sequence of `n = 1` and (for even indices) left shift the element + `| 0` + append to the next sequence (for `n = 2`), then left shift the element + `| 1` + append. Vice versa for odd indices. This allows us to generate the up-down pattern of gray code sequences with overall trend up then down, while also respecting uniqueness of integers.

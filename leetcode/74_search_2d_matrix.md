@@ -76,5 +76,5 @@ class Solution:
 ```
 
 ## Notes
-- This is much more efficient than the linear algorithm `O(m + n)` algorithm.
+- This is much more efficient than the linear algorithm `O(m + n)` algorithm for large inputs.
 - Note how the row index is calculated by flooring by `n`, not `m`.

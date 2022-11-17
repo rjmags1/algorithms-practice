@@ -50,4 +50,4 @@ class Solution:
 ```
 
 ## Notes
-- Could also do dfs and keep track of min depth seen so far to solve this. In above we do level-order traversal and return the current depth the first time we encounter a leaf node.
+- Could also do dfs and keep track of min depth seen so far to solve this. In above we do level-order traversal and return the current depth the first time we encounter a leaf node, which is going to be more efficient than dfs in most cases.

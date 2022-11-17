@@ -28,7 +28,7 @@ grep -E "^([0-9]{3}-[0-9]{3}-[0-9]{4})$|^(\([0-9]{3}\) [0-9]{3}-[0-9]{4})$" file
 ```
 
 ## Notes
-- Need to use `-E` for extended regex for `[]` to work because LC `grep` version is 1000 years old. Note how parentheses need to be escaped and how brackets can be used to specify a certain number of a particular character or subpattern. `^` and `$` anchor pattern to start and end of line respectively. `|` specifies we have a match if either of the surrounding subpatterns match. Could shorten such that we only or on the area code prefix but whatever.
+- Need to use `-E` for extended regex for `[rangestart-rangeend]` to work because LC `grep` version is outdated. Note how parentheses need to be escaped and how brackets can be used to specify a certain number of a particular character or subpattern. `^` and `$` anchor pattern to start and end of line respectively. `|` specifies we have a match if either of the surrounding subpatterns match. Could shorten such that we only `|` the area code prefix but this works just fine.
 
 ## Solution 2
 

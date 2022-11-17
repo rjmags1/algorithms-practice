@@ -63,6 +63,6 @@ class Solution:
 ```
 
 ## Notes
-- Use of `sentinel` generally useful in Linked List problems where you are generating a new LL or modifying an existing one and need to keep track of the head node.
+- Use of `sentinel` generally useful in Linked List problems where you are generating a new LL or modifying an existing one and need to keep track of a head node that could potentially be different in the result than it was in the input.
 - Don't forget to carry when `l1.val` and `l2.val` have double digit sum.
-- Don't miss edge case where `l1` or `l2` are both `None` but `carry == 1`.
+- Don't miss edge case where `l1` or `l2` are both `None` but `carry == 1`, i.e. `5 + 5 = 10`.

@@ -46,5 +46,5 @@ END {
 - The code before `END` is executed on each line of the input. The code after `END` is executed after the other code has been applied to all input lines.
 - There is no need to explicitly allocate arrays in `awk` language, just refer to their indices directly. An index for which nothing has been allocated returns `""` by default. Refer to an element at an index with `$index_variable`.
 - `NF` and `NR` refer to the number of 'fields' AKA words in a line, and the number of 'records' AKA lines in the input file.
-- Also note the string concatenation. Instead of '+' we just use whitespace as the string concatenation operator.
+- Also note the string concatenation. Instead of `'+'` we just use whitespace as the string concatenation operator, as though the value itself is a template.
 - The code is adding each word in a line to a substring in `arr` of words for which the field number of the words in the substring is the same, which is how we transpose a matrix and a more general way of describing what the prompt wants us to do. Once we have fully constructed `arr` we `print` each of its elements.

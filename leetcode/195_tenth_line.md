@@ -49,4 +49,4 @@ awk '
 ```
 
 ## Notes
-- Just print get and print the tenth line with `awk`. Probably more efficient ways to do this with `head` or `tail` but I have more to learn about bash scripting.
+- Just get and print the tenth line with `awk`. Probably more efficient ways to do this with `head` or `tail` but I am a novice at bash.

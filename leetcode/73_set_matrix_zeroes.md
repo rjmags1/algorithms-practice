@@ -1,6 +1,6 @@
 # 73. Set Matrix Zeroes - Medium
 
-Given an `m x n` integer matrix matrix, if an element is `0`, set its entire row and column to `0`'s.
+Given an `m x n` integer matrix `matrix`, if an element is `0`, set its entire row and column to `0`'s.
 
 You must do it in place.
 
@@ -59,5 +59,5 @@ class Solution:
 ```
 
 ## Notes
-- Not a difficult problem, but definitely an annoying one. Need to be careful about handling zero-marking of the top row and left column. All columns and rows can use their first cell as the marker for if the entire row or column should be set to `0` or not, except for the top row and left column; `matrix[0][0]` could represent both. Simplest workaround for this is to use a boolean flag for one of them, and `matrix[0][0]` for the other. 
+- Not a difficult problem, but definitely an annoying one due to edge cases. Need to be careful about handling zero-marking of the top row and left column. All columns and rows can use their first cell as the marker for if the entire row or column should be set to `0` or not, except for the top row and left column; `matrix[0][0]` could represent both. Simplest workaround for this is to use a boolean flag for one of them, and `matrix[0][0]` for the other. 
 - Once the matrix is correctly marked, to use the newly marked first in row and column cells we need to be careful to avoid incorrectly setting all top row or left column cells to `0` prematurely.

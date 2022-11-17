@@ -51,14 +51,9 @@ SELECT DISTINCT num AS ConsecutiveNums FROM (
     SELECT l1.id, l1.num, (
         (SELECT COUNT(*) FROM (
             SELECT l2.id, l2.num FROM Logs AS l2 
-            WHERE l2.id = l1.id + 1 AND l1.num = l2.num)
-            AS a) != 0
-        AND
-        (SELECT COUNT(*) FROM (
-            SELECT l2.id, l2.num FROM Logs as l2 
-            WHERE l2.id = l1.id + 2 AND l1.num = l2.num) 
-            AS b) != 0
-        ) 
+            WHERE l1.num = l2.num AND (
+                l1.id + 1 = l2.id OR l1.id + 2 = l2.id))
+            AS a) = 2
         AS cons
     FROM Logs AS l1) AS withcons 
 WHERE withcons.cons = TRUE;
@@ -81,4 +76,4 @@ WHERE (
 ```
 
 ## Notes
-- Much faster because the effect of this kind of aliasing and duplication of the same table in the `FROM` clause essentially copies `Logs` and attaches it to itself so it is easy to reference the next row and the next next row.
+- Much faster because the effect of this kind of aliasing and duplication of the same table in the `FROM` clause essentially copies `Logs` and attaches it to itself so it is easy to reference the next row and the next next row. The columns of the first row `l1` is adjacent to the columns of the second row of `l2` and the columns of the third row of `l3` in the table that gets selected from. __This is a tertiary Cartesian product of the rows of Logs__ (https://en.wikipedia.org/wiki/Cartesian_product).

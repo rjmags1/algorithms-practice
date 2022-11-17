@@ -53,4 +53,5 @@ class Solution:
 ```
 
 ## Notes
-- Key insight to this problem is that it is not enough to expand out from local mins or local maxes. The stack of indices allows us to always know, for any particular bar, which indices bound the rectangle containing that bar with the height of that bar.
+- Notice that to find the largest rectangle in a histogram with a stack, we want indices on the stack to have non-descending order, because histogram rectangles have their width bounded by rectangles shorter than them, and wider histogram rectangles with shorter heights may have larger rectangles in them than the bounding ("shorter") height.
+- The stack of indices allows us to always know, for any particular bar, which indices bound the rectangle containing that bar with the height of that bar. Trying to solve this by expanding out from local mins or local maxes does not work because the max histogram could be low in height but large in width such that it spans multiple peak-valley cycles. We also cannot use the same approaches for trapping water problems (two-pointer outside-in, etc.) because this is a fundamentally different problem, though it seems similar because we are dealing with a histogram input.

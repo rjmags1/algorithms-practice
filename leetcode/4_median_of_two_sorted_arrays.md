@@ -1,4 +1,5 @@
 # 4. Median of Two Sorted Arrays - Hard
+
 Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, return the median of the two sorted arrays.
 
 The overall run time complexity should be `O(log(m+n))`.
@@ -19,7 +20,6 @@ Output: 2.50000
 Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
 ```
 
-
 ##### Constraints:
 
 - `nums1.length == m`
@@ -29,8 +29,8 @@ Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
 - `1 <= m + n <= 2000`
 - <code>-10<sup>6</sup> <= nums1[i], nums2[i] <= 10<sup>6</sup></code>
 
-
 ## Solution
+
 ```
 # Time: O(log(min(m, n)))
 # Space: O(1)
@@ -67,10 +67,9 @@ class Solution:
 
 ## Notes
 - The main idea behind all implementations of this problem is to use binary search to efficiently search partitions of `short` in order to find the one that splits both arrays such that we can compute their median.
-- It is best to choose `short` to run binary search/partition on instead of `long` because the search space for `long` contains incorrect answers... i.e., if we partition too close to the start or end of `long` the size of the bucket containing numbers smaller than the median will be too big or too small compared to the size of the bucket with numbers `>=` the median.
-- The above iterative approach to this problem is annoyingly hard to implement, primarily because it is difficult to correctly partition `long` and `short` on each iteration. I tend to struggle with getting this part of the problem correct everytime I revisit and don't have it committed to memory. 
-- It is trivial to determine how to partition `long` based on how we partition `short`. `l1` represents the index of the largest element in `short` that belongs to the bucket of numbers that are less than the median.
-- This is one of those annoying hard problems where it is probably best to memorize parts of the code... here, it would be the initial values of `i` and `j` (atypical binary search boundaries that lead to the correct answer because they are conceptually correct). `i == -1` represents none of the elems in `short` being in the small bucket, whereas `i == n - 1` represents all of the elems in `short` being in the small bucket.
+- It is best to choose `short` to run binary search/partition on instead of `long` because the search space for `long` contains incorrect answers... i.e., if we partition too close to the start or end of `long` the size of the bucket containing numbers `<` the median will be too big or too small compared to the size of the bucket with numbers `>=` the median.
+- The above iterative approach to this problem is annoyingly hard to implement, primarily because it is difficult to correctly partition `long` and `short` on each iteration based on a given split point. I tend to struggle with getting this part of the problem correct everytime I revisit and don't have it committed to memory. 
+- It is trivial to determine how to partition `long` based on how we partition `short`, __as long as we are consistent about the meaning of the indices surrounding the split points for `long` and `short`__. `l1` represents the index of the largest element in `short` that belongs to the bucket of numbers `<` the median. If `l1 == -1`, this means there are no numbers in `short` that belong to the bucket of numbers less than the median.
 - See below diagram for visualization:
 ```
 A      : [ | 2 4 6]    L : [1 3 5]

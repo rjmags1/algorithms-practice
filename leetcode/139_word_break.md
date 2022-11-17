@@ -66,8 +66,7 @@ class Solution:
 ```
 
 ## Notes
-- Top-down recursive dp approach. As is typical for this type of approach, we memoize results of recursive calls. When we call `rec(i)`, we are asking, "is it possible to partition the substring `s[i:]` into words in `wordDict`?" The space complexity on leetcode for this same strategy is just `O(n)` but I think that is wrong because we also convert `wordDict` to a set, which bumps the space complexity to `O(n + m)`. 
-
+- Top-down recursive dp approach. As is typical for this type of approach, we memoize results of recursive calls. When we call `rec(i)`, we are asking, "is it possible to partition the substring `s[i:]` into words in `wordDict`?" 
 
 ## Solution 2
 
@@ -94,5 +93,5 @@ class Solution:
 
 ## Notes
 - Bottom-up dp approach. `dp[k]` represents whether or not the substring `s[:k]` is able to be partitioned using words in `wordDict`. The recurrence relation depends on two things: 
-1. If a word `w` in wordDict, with length `l`, matches the end of `s[:k]` 
-2. `dp[k - l]` (if beginning of `s[:k]` not covered by `w` is also able to be partitioned using words in wordDict, base case is `w` covers entirety of `s[:k]`, hence the extra `True` at the start of `dp`).
+    1. If a word `w` in wordDict, with length `l`, matches the end of `s[:k]` 
+    2. `dp[k - l]` (if beginning of `s[:k]` not covered by `w` is also able to be partitioned using words in wordDict, base case is `w` covers entirety of `s[:k]`, hence the extra `True` at the start of `dp`).

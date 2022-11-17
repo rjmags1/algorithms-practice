@@ -47,8 +47,8 @@ class Solution:
 ```
 
 ## Notes
-- This is Kadane's algorithm, which I've seen be characterized as dp but seems greedy to me since at each iteration we are making the locally optimal decision about continuing with or restarting the current subarray under consideration (whose sum is `curr`) with just the current element (`num`). 
-- The main thing to keep in mind here is whenever the current subarray sum dips below the value of the current element in `nums`, we are better off ditching the previous subarray and starting a new one with the current element.
+- This is Kadane's algorithm, which I've seen be characterized as dp because we are relying on answers to previous subproblems to answer the current subproblem, but seems greedy to me since at each iteration we are making the locally optimal decision about continuing with or restarting the current subarray under consideration (whose sum is `curr`) with just the current element (`num`). 
+- The main thing to keep in mind here is whenever the current subarray sum dips below the value of the current element in `nums`, we are better off ditching the previous subarray and starting a new one with the current element. Consider if we continued with the previous subarray; the sum would never be higher than if we had ditched it because of the relative decrease when added the current number versus starting fresh with the current number.
 
 ## Solution 2
 

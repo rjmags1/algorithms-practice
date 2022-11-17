@@ -1,4 +1,5 @@
 # 5. Longest Palindromic Substring - Medium
+
 Given a string `s`, return the longest palindromic substring in `s`.
 
 A string is called a palindrome string if the reverse of that string is the same as the original string.
@@ -79,7 +80,7 @@ class Solution:
 
             while i + length < n and i - length >= 0:
                 if t[i + length] != t[i - length]:
-                    break;
+                    break
                 length += 1
 
             if length > longest:

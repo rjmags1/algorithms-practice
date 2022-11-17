@@ -4,12 +4,12 @@ The set `[1, 2, 3, ..., n]` contains a total of `n!` unique permutations.
 
 By listing and labeling all of the permutations in order, we get the following sequence for `n = 3`:
 
-1. "123"
-2. "132"
-3. "213"
-4. "231"
-5. "312"
-6. "321"
+1. `"123"`
+2. `"132"`
+3. `"213"`
+4. `"231"`
+5. `"312"`
+6. `"321"`
 
 Given `n` and `k`, return the <code>k<sup>th</sup></code> permutation sequence.
 
@@ -95,4 +95,6 @@ class Solution:
 ```
 
 ## Notes
-- Above takes advantage of the fact that, for a given n and k, we can determine what the next number is in the permutation we are building with simple math. I.e., for initial problem with n = 4 and k = 22, we know the first number in the result permutation is 4, since the first 18 permutations for n = 4 start with 1, 2, or 3. To determine the second number in the result permutation, we use the same logic on subproblem with n = 3 and k = k - 18 = 4, where the n available numbers for building the rest of the result are 1, 2, and 3. When we go about determining the second number, we know that first 2 permutations for n = 3 would start with the lowest available number 1, the next 2 permutations would start with the next lowest available number, 2, and so we can say for sure the second number in our result permutation is 2, since k = 4 for this subproblem. From there, we have n = 2 and k = k - 2 = 2, with available numbers 1 and 3, which is trivial.
+- Above takes advantage of the fact that, for a given `n` and `k`, we can determine what the next number is in the permutation we are building with simple math. I.e., for initial problem with `n = 4` and `k = 22`, we know the first number in the result permutation is `4`, since the first `18` permutations for `n = 4` start with `1`, `2`, or `3`. To determine the second number in the result permutation, we use the same logic on subproblem with `n = 3` and `k = k - 18 = 4`, where the `n` available numbers for building the rest of the result are `1`, `2`, and `3`. When we go about determining the second number, we know that first `2` permutations for `n = 3` would start with the lowest available number `1`, the next `2` permutations would start with the next lowest available number, `2`, and so we can say for sure the second number in our result permutation is `2`, since `k = 4` for this subproblem. From there, we have `n = 2` and `k = k - 2 = 2`, with available numbers `1` and `3`, which is trivial.
+- It is definitely not immediately obvious to newcomers that we can continuously subtract from `k` the number of permutations we ruled out from the previous number to get the new `k` for the next subproblem, but with a little experimentation with an example the pattern becomes clear and feels intuitive. 
+- In short, each digit in a permutation allows us to rule out some of `n` possible permutations, and we are trying to find the `kth` permutation. The number of permutations we can rule out with a particular digit depends on the order of that particular digit in the permutation.

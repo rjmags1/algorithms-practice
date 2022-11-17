@@ -2,7 +2,7 @@
 
 You are given the heads of two sorted linked lists `list1` and `list2`.
 
-Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
 Return the head of the merged linked list.
 
@@ -68,4 +68,4 @@ class Solution:
 ```
 
 ## Notes
-- Sentinel simplifies edge cases where `list1` and `list2` heads have same value.
+- Sentinel simplifies edge cases where `list1` and `list2` heads have same value, and makes implementation simpler by simply allowing us to add the next smallest node to the tail of the LL with sentinel as the first node.

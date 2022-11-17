@@ -55,4 +55,4 @@ class Solution:
 
 ## Notes
 - Pretty straightforward problem, just need to handle edge cases correctly (no leading whitespace, entire string is whitespace).
-- Could use builtin functions for more succinct implementation, but hard runtime could potentially (not big-O) would suffer, as well as space complexity.
+- Could use builtin functions for more succinct implementation, but hard runtime (not big-O) could potentially suffer, as well as space complexity.

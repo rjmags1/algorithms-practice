@@ -52,5 +52,5 @@ class Solution:
 ```
 
 ## Notes
-- This should be a hard level problem as well because of the highly non-intuitive pattern used to solve the problem; it is not obvious at all the only thing useful about `inorder` is determining the size of left and right subtrees. The logic behind how the tree gets built is based on the definition of `postorder`.
+- This should be a hard level problem as well because of the non-intuitive pattern used to solve the problem; it is not obvious at all the only thing useful about `inorder` is determining the size of left and right subtrees. The logic behind how the tree gets built is based on the definition of `postorder`.
 - This is a reflection of 105. Construct Binary Tree from Inorder and Preorder; the logic is the exact same, except in `postorder` the root of our result always has its value at the last index. Additionally, the right child of a given node (if it has one) will always have its value at the index before the root in `postorder`.

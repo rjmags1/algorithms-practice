@@ -69,8 +69,8 @@ class Solution:
 ```
 
 ## Notes
-- This solution arguable preferable to the second despite non-constant space due to single pass. Memory (usually) not expensive nowadays compared to recent past.
-- Also want to draw attention to how this solution uses mutable objects as dictionary (hash table) keys. This works (I am assuming) because the hash lookup uses the memory address of the object as opposed to the contents of the object, but in general should be hesitant about using mutable objects as keys because you are essentially leaving the hash lookup up to the underlying implementation of the object you are using as a key.
+- This solution arguably preferable to the second despite non-constant space due to single pass. Memory (usually) not expensive nowadays compared to recent past.
+- Also want to draw attention to how this solution uses mutable objects as dictionary (hash table) keys. This works (I am assuming) because the hash lookup uses the memory address of the object as opposed to the contents of the object, but in general should be hesitant about using mutable objects as keys because you are essentially leaving the hash lookup up to the underlying implementation of the hash function/object you are using as a key.
 
 ## Solution 2
 

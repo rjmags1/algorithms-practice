@@ -5,7 +5,6 @@ An integer is a palindrome when it reads the same backward as forward.
 
 - For example, `121` is a palindrome while `123` is not.
 
-
 ##### Example 1:
 
 ```
@@ -21,7 +20,6 @@ Input: x = -121
 Output: false
 Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
 ```
-
 
 ##### Constraints:
 
@@ -46,4 +44,4 @@ class Solution:
 ```
 
 ## Notes
-- There is another solution where only half of the original number's digits get reversed, but it requires handling several other edge cases while only reducing the above solution's time complexity in half.
+- There is another solution where only half of the original number's digits get reversed, but it requires handling several other edge cases while only reducing the above solution's time complexity by a constant factor (half).

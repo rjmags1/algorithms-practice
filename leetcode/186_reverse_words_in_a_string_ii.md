@@ -54,4 +54,4 @@ class Solution:
 ```
 
 ## Notes
-- Simple
+- Reverse all characters so words are in their correct relative order and then unreverse each word by reversing it.

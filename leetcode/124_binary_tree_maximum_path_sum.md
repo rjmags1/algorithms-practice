@@ -53,5 +53,4 @@ class Solution:
 ```
 
 ## Notes
--
--
+- The max path sum for a given node as the root is the max of the path running thru the root, the path from the left subtree through the current root but not including the right subtree, the path from the right subtree through the current root but not including the left subtree, and just the node's value itself (consider a case where `node.val` is the only positive node in the tree). To calculate these values for all nodes, we need to pass the max branch running through the current node so that it may be used as part of the path for nodes higher up in the tree.

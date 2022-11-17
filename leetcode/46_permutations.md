@@ -53,5 +53,5 @@ class Solution:
 ```
 
 ## Notes
-- The solution to this problem is a obvious if you have decent exposure to recursion and draw out all possible permutations in a short example. It becomes clear from the example that index `0` can be occupied by any of the `n` elements, index `1` can be occupied by any elements not places at index `0`, and so forth. This is the definition of permutation, and is where the factorial portion of the time complexity comes from.
+- The solution to this problem is obvious if you have decent exposure to recursion and draw out all possible permutations in a short example. It becomes clear from the example that index `0` can be occupied by any of the `n` elements, index `1` can be occupied by any elements not used for index `0`, and so forth. This is the definition of permutation, and is where the factorial portion of the time complexity comes from.
 - We save a lot of space and time in this implementation by swapping, recursing, and then unswapping back to the previous configuration, and only building new arrays when we have built a full permutation by swapping. This is much more efficient than building a new array in each recursive call, which more naive solutions tend to do. 

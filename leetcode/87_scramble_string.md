@@ -2,11 +2,11 @@
 
 We can scramble a string `s` to get a string `t` using the following algorithm:
 
-1. If the length of the string is 1, stop.
-2. If the length of the string is > 1, do the following:
-- Split the string into two non-empty substrings at a random index, i.e., if the string is s, divide it to x and y where s = x + y.
-- Randomly decide to swap the two substrings or to keep them in the same order. i.e., after this step, s may become s = x + y or s = y + x.
-- Apply step 1 recursively on each of the two substrings x and y.
+1. If the length of the string is `1`, stop.
+2. If the length of the string is `> 1`, do the following:
+- Split the string into two non-empty substrings at a random index, i.e., if the string is `s`, divide it to `x` and `y` where `s = x + y`.
+- Randomly decide to swap the two substrings or to keep them in the same order. i.e., after this step, `s` may become `s = x + y` or `s = y + x`.
+- Apply step 1 recursively on each of the two substrings `x` and `y`.
 
 Given two strings `s1` and `s2` of the same length, return `true` if `s2` is a scrambled string of `s1`, otherwise, return `false`.
 
@@ -76,6 +76,32 @@ class Solution:
 
 ## Notes:
 
-- I think this is a very hard problem. It seems like one could follow the directions in the prompt, altering `s1` accordingly. Besides the inefficiency associated with that, I could not implement a solution with that approach that passes certain short input test cases, so it might not even be a valid approach at all. 
+- I think this is a very hard problem for newcomers or even intermediate algo people. It seems like one could follow the directions in the prompt, altering `s1` accordingly. Besides the inefficiency associated with that, I could not implement a solution with that approach that passes certain short input test cases, so it might not even be a valid approach at all. 
 - To understand this solution it helps to draw out a recursive call tree for each split point in the original string `s1` and consider which characters of `s1` are compared with those of `s2` in the case where we don't swap about the split point, and in the case where we do swap about the split point.
-- In terms of understanding the time complexity, there are <code>O(n<sup>2</sup>)</code> possible substrings in `s1`. Each of those substrings can have <code>O(n<sup>2</sup>)</code> swaps and subswaps.
+- In terms of understanding the time complexity, there are <code>O(n<sup>2</sup>)</code> possible substrings in `s1`. Each of those substrings can have <code>O(n<sup>2</sup>)</code> substrings which can then be subject to swaps/non-swaps.
+- Here is the logic behind an iterative matrix approach that is in general a useful way of framing complicated problems to make them more manageable: 
+    ```
+    Let F(i, j, k) = whether the substring S1[i..i + k - 1] is a scramble of S2[j..j + k - 1] or not
+    Since each of these substrings is a potential node in the tree, we need to check for all possible cuts.
+    Let q be the length of a cut (hence, q < k), then we are in the following situation:
+    
+    S1 [   x1    |         x2         ]
+       i         i + q                i + k - 1
+    
+    here we have two possibilities:
+         
+    S2 [   y1    |         y2         ]
+       j         j + q                j + k - 1
+       
+    or 
+    
+    S2 [       y1        |     y2     ]
+       j                 j + k - q    j + k - 1
+    
+    which in terms of F means:
+    
+    F(i, j, k) = for some 1 <= q < k we have:
+     (F(i, j, q) AND F(i + q, j + q, k - q)) OR (F(i, j + k - q, q) AND F(i + q, j, k - q))
+     
+    Base case is k = 1, where we simply need to check for S1[i] and S2[j] to be equal 
+    ```

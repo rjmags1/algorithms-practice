@@ -40,7 +40,7 @@ Follow-up: Could you use search pruning to make your solution faster with a larg
 ## Solution
 
 ```
-# Time: O(3^l)
+# Time: O(n * 3^l)
 # Space: O(l)
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
@@ -75,4 +75,4 @@ class Solution:
 ```
 
 ## Notes
--  Fairly basic DFS, just need to be careful about the ordering of base cases (as is typical in recursive implementations), as well as being sure not to double count squares.
+-  Fairly basic backtracking with DFS, just need to be careful about the ordering of base cases (as is typical in recursive implementations), as well as being sure not to double count squares.

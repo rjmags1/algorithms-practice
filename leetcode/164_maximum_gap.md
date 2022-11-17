@@ -60,7 +60,7 @@ class Solution:
 ```
 
 ## Notes
-- Here we sort in (pseudo) linear time with radix sort and then compare consecutive elements with a basic linear scan. Radix sort works well if you are working with large inputs but there is a reasonable upper bound on the range of the elements in the input. Here we are working with a max value of <code>10<sup>9</sup></code> as our upper bound, so it makes sense to sacrifice 10 linear passes for each possible magnitude of 10 in a positive integer <code><= 10<sup>9</sup></code> to obtain a sorted version of `nums` and easily find the desired max gap.
+- Here we sort in (pseudo) linear time with radix sort and then compare consecutive elements with a basic linear scan. Radix sort works well if you are working with large inputs but there is a reasonable upper bound on the range size of the elements in the input. Here we are working with a max value of <code>10<sup>9</sup></code> as our upper bound, so it makes sense to sacrifice 10 linear passes for each possible magnitude of 10 in a positive integer <code><= 10<sup>9</sup></code> to obtain a sorted version of `nums` and easily find the desired max gap.
 
 ## Solution 2
 
