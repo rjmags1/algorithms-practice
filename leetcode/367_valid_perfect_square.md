@@ -1,0 +1,62 @@
+# 367. Valid Perfect Square - Easy
+
+Given a positive integer `num`, write a function which returns `True` if `num` is a perfect square else `False`.
+
+Follow up: Do not use any built-in library function such as `sqrt`.
+
+##### Example 1:
+
+```
+Input: num = 16
+Output: true
+```
+
+##### Example 2:
+
+```
+Input: num = 14
+Output: false
+```
+
+##### Constraints:
+
+- <code>1 <= num <= 2<sup>31</sup> - 1</code>
+
+## Solution 1
+
+```
+# Time: O(sqrt(n))
+# Space: O(1)
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        x = 1
+        while x * x < num:
+            x += 1
+        return x * x == nu
+```
+
+## Notes
+- Linearly search the answer space.
+
+## Solution 2
+
+```
+# Time: O(log(n))
+# Space: O(1)
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        l, r = 1, num // 2
+        while l < r:
+            mid = (l + r) // 2
+            midsq = mid * mid
+            if midsq == num:
+                return True
+            if num < midsq:
+                r = mid - 1
+            else:
+                l = mid + 1
+        return l * l == num
+```
+
+## Notes
+- Logarithmically search the answer space with binary search. 
