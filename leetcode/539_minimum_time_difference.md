@@ -24,7 +24,7 @@ Output: 0
 ## Solution
 
 ```
-# Time: O(n)
+# Time: O(1)
 # Space: O(1)
 class Solution:
     def findMinDifference(self, timePoints: List[str]) -> int:
@@ -45,4 +45,4 @@ class Solution:
 ```
 
 ## Notes
-- There are `m = 24 * 60 == 1440` possible unique `timePoints`; if `m < n` there must be a duplicate time in the input with distance `0`. For any inputs where there are not duplicate times, since the problem only cares about the distance between times as if we were looking at a weird clock with no hours and `1440` minute tick marks (i.e., minimum distance between two points on a circle), we compute `distance` between two times accordingly.
+- There are `m = 24 * 60 == 1440` possible unique `timePoints`; if `m < n` there must be a duplicate time in the input with distance `0` (pigeonhole principle). For any inputs where there are not duplicate times, since the problem only cares about the distance between times as if we were looking at a weird clock with no hours and `1440` minute tick marks (i.e., minimum distance between two points on a circle), we compute `distance` between two times accordingly.
