@@ -53,4 +53,4 @@ class Solution:
 ```
 
 ## Notes
-- To understand the time and space, note that `2n - 1` is the sum of a geometric series from `1` to `n` where series elements are double the previous element. This sequence represents the number of pop operatiors we will perform to construct the final result. If we count the result space into the space complexity, it will still be `O(n)` because the number of parentheses added is `2 * (2n - 1)`.
+- To understand the time and space, note that `2n - 1` is the sum of a geometric series from `1` to `n` where series elements are double the previous element (assuming `n` is a power of `2`). This sequence represents the number of pop operations we will perform to construct the final result. If we count the result space into the space complexity, it will still be `O(n)` because the number of parentheses added is `2 * (2n - 1)`.
