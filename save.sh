@@ -1,4 +1,4 @@
-cd ~/programming/cp
+cd ~/programming/projects/cp
 python3 build_readme.py
 echo "successfully updated readme"
 git add .
