@@ -12,6 +12,8 @@ Return the minimal distance for the squirrel to collect all the nuts and put the
 
 The distance is the number of moves.
 
+![](../assets/573-1.jpg)
+
 ##### Example 1:
 
 ```

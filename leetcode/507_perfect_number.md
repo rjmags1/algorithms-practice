@@ -31,8 +31,9 @@ Output: false
 # Space: O(1)
 class Solution:
     def checkPerfectNumber(self, num: int) -> bool:
-        return num > 1 and sum(x + num // x for x in range(2, int(math.sqrt(num)) + 1) if num % x == 0) + 1 == num
+        s = num > 1 and sum(x + num // x for x in range(2, int(math.sqrt(num)) + 1) if num % x == 0) + 1
+        return s == num if int(math.sqrt(num)) ** 2 != num else s == num - math.sqrt(s)
 ```
 
 ## Notes
-- Use a generator to get constant space.
+- Use a generator to get constant space with less lines.

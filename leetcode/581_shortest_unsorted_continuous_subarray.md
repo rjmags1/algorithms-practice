@@ -69,4 +69,4 @@ class Solution:
 ```
 
 ## Notes
-- To get linear time and constant space, we need to realize the left element of the first descending pair LTR and the right element of the first ascending pair RTL mark the boundaries of the subarray of `nums` containing the smallest and largest unsorted elements. The sorted indices of the smallest and the largest unsorted elements mark the boundaries of the subarray of `nums` that needs to be sorted to `nums` to be sorted, and so we just return the size of that subarray.
+- To get linear time and constant space, we need to realize the left element of the first descending pair LTR and the right element of the first ascending pair RTL mark the boundaries of the subarray of `nums` containing the smallest and largest unsorted elements. The sorted indices of the smallest and the largest unsorted elements mark the boundaries of the subarray of `nums` that needs to be sorted for `nums` to be sorted, and so we just return the size of that subarray.

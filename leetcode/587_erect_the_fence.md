@@ -8,7 +8,7 @@ Return the coordinates of trees that are exactly located on the fence perimeter.
 
 ##### Example 1:
 
-![](assets/erect2-plane.jpg)
+![](../assets/erect2-plane.jpg)
 
 ```
 Input: trees = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]
@@ -18,7 +18,7 @@ Explanation: All the trees will be on the perimeter of the fence except the tree
 
 ##### Example 2:
 
-![](assets/erect1-plane.jpg)
+![](../assets/erect1-plane.jpg)
 
 ```
 Input: trees = [[1,2],[2,2],[4,2]]
@@ -58,4 +58,4 @@ class Solution:
 ```
 
 ## Notes
-- This question involves the concept of convex hull. This refers to the perimeter around some set of points in a cartesian plane such that the perimeter is composed of straight lines between certain points in the set of points and none of the angles between lines in the perimeter are `> 180 degrees`. If we sort the points and iterate LTR we can use a stack (`fence`) to obtain the points on the bottom half of the fence by considering the slopes of the most recent line in the fence (`fence[-2]` and `fence[-1]`) and the line created by `fence[-1]` and the current point. As we iterate, we want to remove any points from the stack that cause a relative decrease in scope between these two lines, because this would result in a non-convex hull. In other words, any points in the fence that cause a non-convex hull as we iterate cannot be in the final fence. To get the top half of the final fence, we iterate RTL with the same logic.
+- This question involves the concept of convex hull. This refers to the perimeter around some set of points in a cartesian plane such that the perimeter is composed of straight lines between certain points in the set of points and none of the angles between lines in the perimeter are `> 180 degrees`. If we sort the points and iterate LTR we can use a stack (`fence`) to obtain the points on the bottom half of the fence by considering the slopes of the most recent line in the fence (`fence[-2]` and `fence[-1]`) and the line created by `fence[-1]` and the current point. As we iterate, we want to remove any points from the stack that cause a relative decrease in slope between these two lines, because this would result in a non-convex hull. In other words, any points in the fence that cause a non-convex hull as we iterate cannot be in the final fence. To get the top half of the final fence, we iterate RTL with the same logic.

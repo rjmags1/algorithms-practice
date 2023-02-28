@@ -1,6 +1,6 @@
 # 526. Beautiful Arrangement - Medium
 
-Suppose you have `n` integers labeled `1` through `n`. A permutation of those `n` integers perm (1-indexed) is considered a beautiful arrangement if for every `i` (`1 <= i <= n`), either of the following is true:
+Suppose you have `n` integers labeled `1` through `n`. A permutation of those `n` integers `perm` (1-indexed) is considered a beautiful arrangement if for every `i` (`1 <= i <= n`), either of the following is true:
 
 - `perm[i]` is divisible by `i`.
 - `i` is divisible by `perm[i]`.
@@ -60,4 +60,4 @@ class Solution:
 ```
 
 ## Notes
-- Bitmask to represent numbers that have already been used in the given permutation. `i` represents the 1-index we are trying to occupy with an available number. Memoization/dp prevents resolving previously solved `(i, mask)` subproblems. Note the actual runtime is actually much faster than its asympototic upper bound due to search pruning according to problem constraints.
+- Bitmask to represent numbers that have already been used in the given permutation. `i` represents the 1-index we are trying to occupy with an available number. Memoization/dp prevents re-solving previously solved `(i, mask)` subproblems. Note the actual runtime is actually much faster than its asympototic upper bound due to search pruning according to problem constraints.

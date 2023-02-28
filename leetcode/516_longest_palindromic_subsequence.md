@@ -54,4 +54,4 @@ class Solution:
 ```
 
 ## Notes
-- Familiar recurrence relation, difficult part is figuring out how to iterate in a way that allows building of `dp` matrix. If we iterate `for i in n - 1..0, for j in i..n` this could be optimized to linear space.
+- Familiar recurrence relation, difficult part is figuring out how to iterate in a way that allows building of `dp` matrix. If we iterate `for i in n - 1..0, for j in i + 1..n - 1` this could be optimized to linear space.

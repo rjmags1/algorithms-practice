@@ -45,4 +45,4 @@ class Solution:
 ```
 
 ## Notes
-- Monotonic decreasing stack that holds elements for which we have not yet found a next greater element; traverse LTR in a circle because it will take at mostt `2` full iterations to find every next greater element for each element, if it exists (ie, the next greater element for the largest element in the array does not exist).
+- Monotonic decreasing stack that holds elements for which we have not yet found a next greater element; traverse LTR in a circle because it will take at most `2` full iterations to find every next greater element for each element, if it exists (ie, the next greater element for the largest element in the array does not exist).

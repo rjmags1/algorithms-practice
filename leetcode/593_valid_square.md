@@ -51,4 +51,4 @@ class Solution:
 ```
 
 ## Notes
-- Enumerate the distances between all possible pairs of points. If the points form a square, there will be one distance that has `4` pairs equivalent to it. This is not enough to guarantee a square, however; a non-square parallelogram of equal sides will satisfy this constraint. To guarantee a square, the first constraint needs to be satisfied, but the sum of squares of a side must also equal the squared length of the diagonal.
+- Enumerate the distances between all possible pairs of points. If the points form a square, there will be one distance that has `4` pairs equivalent to it. This is not enough to guarantee a square, however; a non-square parallelogram of equal sides will satisfy this constraint. To guarantee a square, the first constraint needs to be satisfied, and the sum of squares of a side must also equal the squared length of the diagonal.

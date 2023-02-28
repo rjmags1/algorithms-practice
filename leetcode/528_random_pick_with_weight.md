@@ -76,4 +76,4 @@ class Solution:
 ```
 
 ## Notes
-- Binary search on prefix sums for random number in range `[1, sum(w)]` allows for desired weighted probability of random selection. Randomly selecting from `[0, sum(w)]` will cause the well-written test cases to fail, because based on the input constraints, it is impossible to have a prefix sum equal to `0`.
+- Binary search on prefix sums for random number in range `[1, sum(w)]` allows for desired weighted probability of random selection. Randomly selecting from `[0, sum(w)]` will cause the (well-written) test cases to fail, because based on the input constraints, it is impossible to have a prefix sum equal to `0`.

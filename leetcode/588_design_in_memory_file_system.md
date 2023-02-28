@@ -2,7 +2,7 @@
 
 Design a data structure that simulates an in-memory file system.
 
-Implement the FileSystem class:
+Implement the `FileSystem` class:
 
 - `FileSystem()` Initializes the object of the system.
 - `List<String> ls(String path)`

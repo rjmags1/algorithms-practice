@@ -78,4 +78,4 @@ class Solution:
 ```
 
 ## Notes
-- With path compression and union by rank implemented correctly, performed `union` on a `UnionFind` data structure is upper bounded by the ackermann function of `n`, which grows so slowly that the time of `union` can be treated as a small constant. This is a textbook union find question. Note how we iterate to avoid considering the same edge twice.
+- With path compression and union by rank implemented correctly, `union` method of a `UnionFind` data structure is upper bounded by the ackermann function of `n`, which grows so slowly that the time of `union` can be treated as a small constant. This is a textbook union find question. Note how we iterate to avoid considering the same edge twice.
