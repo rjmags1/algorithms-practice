@@ -164,4 +164,4 @@ class Solution:
 
 ## Notes
 - Could naively try and solve this with complicated series of nested if-else statements according to the prompt, but it is much cleaner to go with an OOP approach, implementing a DFA (deterministic finite automaton AKA state machine). 
-- I named the state machine above a Parser, which is a little more specific than DFA. Regardless, my Parser does what a DFA does: navigate between a set of predefined states based on some input, altering global/instance/static variables along the way.
+- I named the state machine above a Parser but it does what a DFA does: navigate between a set of predefined states based on some input, altering data/variables along the way.

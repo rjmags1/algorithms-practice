@@ -48,5 +48,5 @@ class Solution:
 ```
 
 ## Notes
-- This is a catalan number problem. The catalan number sequence occurs in various counting problems and is often involved in enumerating the number of recursively defined objects. The sequence: 1, 1, 2, 5, 14, 42, 132, 429. If the number of outputs for a problem grows according to that sequence or some offset of it you are probably dealing with a catalan number spacetime complexity, which is factorial in nature. 
-- In this problem, for a given `n`, there will be the `nth` catalan number of valid parentheses combinations, each of which will have length `n`. The `nth` catalan number can be calculated using the equation (2n)! / ((n + 1)! * n!).
+- This is a catalan number problem. The catalan number sequence occurs in various counting problems and is often involved in enumerating recursively defined objects. The sequence: `1, 1, 2, 5, 14, 42, 132, 429, ...`. If the number of outputs for a problem grows according to that sequence or some offset of it you are probably dealing with a catalan number spacetime complexity, which is exponential in nature. 
+- In this problem, for a given `n`, there will be the `nth` catalan number of valid parentheses combinations, each of which will have length `n`. The `nth` catalan number can be calculated using the equation `(2n)! / ((n + 1)! * n!)`.

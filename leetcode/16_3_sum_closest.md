@@ -34,29 +34,24 @@ Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).
 # Time: O(n^2)
 # Space: O(n) or O(log(n)) due to sorting
 class Solution:
-    def threeSumClosest(self, nums: List[int], target: int) -> int:
+    def threeSumClosest(self, nums, target):
         nums.sort()
-        n = len(nums)
-        closest = sum(nums[:3])
-        for i in range(n - 2):
-            a = nums[i]
-            if i > 0 and a == nums[i - 1]:
-                continue
-                
-            j, k = i + 1, n - 1
+        
+        closest = None
+        for i in range(len(nums) - 2):
+            j, k = i + 1, len(nums) - 1
             while j < k:
-                b, c = nums[j], nums[k]
-                curr = a + b + c
-                if abs(target - curr) < abs(target - closest):
-                    closest = curr
-                
-                if curr == target:
-                    break
-                while curr < target and j < k and nums[j] == b:
-                    j += 1
-                while curr > target and j < k and nums[k] == c:
+                sum = nums[i] + nums[j] + nums[k]
+                if closest is None or abs(target - closest) > abs(target - sum):
+                    closest = sum
+                    
+                if closest == target:
+                    return target
+                elif sum > target:
                     k -= 1
-            
+                else:
+                    j += 1
+
         return closest
 ```
 
