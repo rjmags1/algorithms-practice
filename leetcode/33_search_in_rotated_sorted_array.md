@@ -67,4 +67,4 @@ class Solution:
 ```
 
 ## Notes
-- Key to this problem is recognizing that at least one half of a given binary search array is always going to be sorted when dealing with a rotated array.
+- Key to this problem is recognizing that at least one half of a given subarray is always going to be sorted when dealing with a rotated array.
