@@ -55,4 +55,4 @@ class Solution:
 ```
 
 ## Notes
-- I do not think this is easy, not intuitive that `i` will always point to `target` insertion position at end of search if `target` not present in `nums`... but it does.
+- Binary search, notice how targets not present in input are pointed to by `i` at the end of the while loop.

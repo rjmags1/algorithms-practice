@@ -4,6 +4,8 @@ Given `n` non-negative integers representing an elevation map where the width of
 
 ##### Example 1:
 
+<img src="../assets/42_rainwatertrap.png" width="400" />
+
 ```
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
@@ -54,7 +56,7 @@ class Solution:
 ```
 
 ## Notes
-- This solution is much harder than the following but is a good demonstration of more advanced stack techniques. We put indices on the stack, and only add to the stack when `height[i] <= height[i - 1]`. This allows us to determine how much water is trapped between heights in horizontal blocks when `height[i] > height[i - 1]` by popping off the stack.
+- This solution is much harder than the following but is a good demonstration of more advanced stack techniques. We put indices on the stack, and only add to the stack when `height[i] <= height[i - 1]` (monotonically non-increasing stack). This allows us to determine how much water is trapped between heights in horizontal blocks when `height[i] > height[i - 1]` by popping off the stack.
 
 ## Solution 2
 

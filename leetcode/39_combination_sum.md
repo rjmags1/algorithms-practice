@@ -66,3 +66,4 @@ class Solution:
 
 ## Notes
 - For each candidate, there will never be more than `t/m` recursive calls as we build a combination sum using that number. The exponent in problems involving n-ary recursive call trees is always the max recursive call depth.
+- We could improve the runtime of this solution by adding recursive call tree pruning by postfix sums to `target - curr`.
