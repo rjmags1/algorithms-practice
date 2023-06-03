@@ -61,4 +61,4 @@ class Solution:
 ```
 
 ## Notes
-- Pretty straightforward. We have to spend a pass on finding the length of the LL because `k` is allowed to be greater than the length according to problem constraints.
+- Pretty straightforward. We have to spend a pass on finding the length of the LL because `k` is allowed to be greater than the length according to problem constraints. Otherwise could use feeler point `k` steps ahead of another pointer to solve this in one pass.

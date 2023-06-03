@@ -44,7 +44,7 @@ class Solution:
 ```
 
 ## Notes
-- With a little bit of experimentation it is evident that the number of steps to get to a particular square is equal to the number of ways to get to the cell above plus the number of ways to get to the square to the left, since those are the two squares from which you can get to a square according to the prompt. For those squares in the top row and leftmost column, there is only ever one way to get to them since we can only move downor right.
+- With a little bit of experimentation it is evident that the number of steps to get to a particular square is equal to the number of ways to get to the cell above plus the number of ways to get to the square to the left, since those are the two squares from which you can get to a square according to the prompt. For those squares in the top row and leftmost column, there is only ever one way to get to them since we can only move down or right.
 
 ## Solution 2
 

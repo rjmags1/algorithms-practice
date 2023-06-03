@@ -54,4 +54,4 @@ class Solution:
 ```
 
 ## Notes
-- We can't avoid the factorial complexity in this version of the problem, but we can cut down on the space used, since we only need to find the number of unique solutions, not every actual unique board state constituting a solution. For this reason, we do not need to generate the board, which is <code>O(n<sup>2</sup>)</code>. All of the other auxiliary data structures are `O(n)`, including the recursive call stack, so we reduce space used to `O(n)`.
+- We can't avoid the factorial time complexity in this version of the problem, but we can cut down on the space used, since we only need to find the number of unique solutions, not every actual unique board state constituting a solution. For this reason, we do not need to generate the board, which is <code>O(n<sup>2</sup>)</code>. All of the other auxiliary data structures are `O(n)`, including the recursive call stack, so we reduce space used to `O(n)`.

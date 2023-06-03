@@ -51,7 +51,7 @@ class Solution:
 ```
 
 ## Notes
-- Instead of multiplying `x` by itself `n` times, we can save ourselves a ton of time by continuously calculating `x` raised to the power of successives halves of `n` using a top-down recursive strategy.
+- Instead of multiplying `x` by itself `n` times, we can save ourselves a ton of time by continuously calculating `x` raised to the power of successive halves of `n` using a top-down recursive strategy.
 - Notice how we reduce edge cases by using the absolute value of `n` to init our recursion.
 
 # Solution 2
@@ -74,4 +74,4 @@ class Solution:
 ```
 
 ## Notes
-- This is the exact same logic as above, except implemented iteratively. Used bitwise operator to check for odd parity to be cool but should also note that it is more time efficient. As we loop, if `n` is odd, we multiply `result` by `curr` before squaring `curr`. This has the same effect as the `else` clause of the return statement in the `calc` function in Solution 1, accumulating all odd parity sub-powers into `result`.
+- This is the idea as above, except implemented iteratively replacing floor for right shift to do halving operation. Used bitwise operator to check for odd parity to be cool but should also note that it is more time efficient. As we loop, if `n` is odd, we multiply `result` by `curr` before squaring `curr`. This has the same effect as the `else` clause of the return statement in the `calc` function in Solution 1, accumulating all odd parity sub-powers into `result`.
