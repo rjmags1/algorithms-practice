@@ -30,7 +30,7 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 ## Solution 1
 
 ```
-# Time: O(n)
+# Time: O(sqrt(x))
 # Space: O(1)
 class Solution:
     def mySqrt(self, x: int) -> int:
