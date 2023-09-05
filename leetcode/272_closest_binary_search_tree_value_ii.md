@@ -96,4 +96,4 @@ class Solution:
 
 ## Notes
 - If it weren't for the followup, this question would be best solved by applying quickselect to an inorder collection of the trees values. Kind of trivial to go about it this way though because the only conceptual jump to make to applying quickselect here is knowing that an inorder traversal of a BST yields a sorted array.
-- This solution will perform much better than a linear time solution when the input is a big balanced BST. It will do 2 * k * log(n) node touches, which for an input such as `k = 5, n = 10000`, we will do `~13 * 10 = 130` node touches as opposed to `10000`. 
+- This solution will perform much better than a linear time solution when the input is a big balanced BST. It will do `2 * k * log(n)` node touches, which for an input such as `k = 5, n = 10000`, we will do `~13 * 10 = 130` node touches as opposed to `10000`. 

@@ -72,4 +72,4 @@ class Solution:
 ```
 
 ## Notes
-- Trivial stack problem, however it is annoying handling the integer division truncation to zero constraint if you haven't seen a problem requiring it before. Floor in python always floors down, i.e. `6 // -9 == 3` in python, whereas `6 // 9 == 0`. Performing float division and casting back to integer does the trick in python.
+- Trivial stack problem, however it is annoying handling the integer division truncation to zero constraint if you haven't seen a problem requiring it before. Floor in python always floors down, i.e. `6 // -9 == -1` in python, whereas `6 // 9 == 0`. Performing float division and casting back to integer does the trick in python.

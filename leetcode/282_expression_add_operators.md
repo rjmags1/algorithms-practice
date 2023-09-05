@@ -37,7 +37,7 @@ Explanation: There are no expressions that can be created from "3456237490" to e
 ## Solution 1
 
 ```
-Overall Time: O(n^4) * 3^n where n is len(num)
+Overall Time: O(n^4 * 3^n) where n is len(num)
 OVerall Space: O(n)
 class Solution:
     @cache

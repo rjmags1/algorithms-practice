@@ -5,6 +5,8 @@ Given the `root` of a binary tree, imagine yourself standing on the right side o
 ##### Example 1:
 
 <img src="../assets/199_right_side_view.jpg" />
+
+
 ```
 Input: root = [1,2,3,null,5,null,4]
 Output: [1,3,4]

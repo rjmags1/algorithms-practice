@@ -19,12 +19,6 @@ Input: nums = [6,6,5,6,3,8]
 Output: [6,6,5,6,3,8]
 ```
 
-##### Example 3:
-
-```
-
-```
-
 ##### Constraints:
 
 - <code>1 <= nums.length <= 5 * 10<sup>4</sup></code>
