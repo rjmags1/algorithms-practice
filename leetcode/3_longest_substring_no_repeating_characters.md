@@ -35,7 +35,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 - `s` consists of English letters, digits, symbols and spaces.
 
 
-## Solution
+## Solution - Python
 ```
 Time: O(n) (one pass!)
 Space: O(max(m, n)) where m is size of charset
@@ -56,3 +56,32 @@ class Solution:
 ## Notes
 - This is a classic sliding window problem. A lot of people solve SW problems with `while` loops but `for` preferable when possible.
 - We avoid a second `O(n)` pass by storing most recently seen indices of encountered characters in a hash table as opposed to using a set/inner loop to narrow the window. Notice the second part of the `if` statement that detects duplicate characters. Since we are using a hash table we need to be careful about only shrinking the window when `idxs[c]` is in the current window, since `idxs` will contain the most recently seen index of a character in `s`, regardless of if it is in the current window or not.
+
+## Solution - C++
+```
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
+// Time: O(n)
+// Space: O(n)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> seen = { };
+        int start = 0;
+        int result = 0;
+        for (int i = 0; i < s.size(); i++) {
+            char c = s[i];
+            if (seen.contains(c) && seen[c] >= start) {
+                start = seen[c] + 1;
+            }
+            result = max(result, i - start + 1);
+            seen[c] = i;
+        }
+
+        return result;
+    }
+};
+```
