@@ -29,7 +29,7 @@ Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
 - `1 <= m + n <= 2000`
 - <code>-10<sup>6</sup> <= nums1[i], nums2[i] <= 10<sup>6</sup></code>
 
-## Solution
+## Solution - Python
 
 ```
 # Time: O(log(min(m, n)))
@@ -83,4 +83,87 @@ B      : [1 | 3 5]     R : [3 5 6] ----- ❌, since 4 > 3
 
 A      : [2 4 6 | ]    L : [2 4 6]
 B      : [ | 1 3 5]    R : [1 3 5] ----- ❌, since 6 > 1
+```
+
+## Solution - C++
+
+```
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+// Time: O(log(min(m, n)))
+// Space: O(1)
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& big, vector<int>& small) {
+        const int m = big.size();
+        const int n = small.size();
+        if (m < n) {
+            return findMedianSortedArrays(small, big);
+        }
+
+        const int nums = m + n;
+        if (nums == 1) {
+            return big[0];
+        }
+
+        const int lteMedians = nums / 2;
+        int smallRangeStart = -1;
+        int smallRangeEnd = n - 1;
+        int l1, r1, l2, r2;
+        int* left1, * right1, * left2, * right2;
+        while (smallRangeStart <= smallRangeEnd) {
+            l1 = (smallRangeStart + smallRangeEnd) / 2;
+            r1 = l1 + 1;
+            l2 = lteMedians - (l1 + 1) - 1;
+            r2 = l2 + 1;
+            left1 = l1 == -1 ? nullptr : &small[l1];
+            right1 = r1 == n ? nullptr : &small[r1];
+            left2 = l2 == -1 ? nullptr : &big[l2];
+            right2 = r2 == m ? nullptr : &big[r2];
+
+            bool validSplitCond1 = left1 == nullptr || right2 == nullptr || *left1 <= *right2;
+            bool validSplitCond2 = left2 == nullptr || right1 == nullptr || *left2 <= *right1;
+            if (validSplitCond1 && validSplitCond2) {
+                break;
+            }
+            if (!validSplitCond1) {
+                smallRangeEnd = l1 - 1;
+            }
+            else {
+                smallRangeStart = l1 + 1;
+            }
+        }
+
+        double result;
+        if (nums & 1) {
+            if (right1 == nullptr || right2 == nullptr) {
+                result = right1 == nullptr ? *right2 : *right1;
+            }
+            else {
+                result = min(*right1, *right2);
+            }
+        }
+        else {
+            double biggestInSmallHalf, smallestInBigHalf;
+            if (left1 == nullptr || left2 == nullptr) {
+                biggestInSmallHalf = left1 == nullptr ? *left2 : *left1;
+            }
+            else {
+                biggestInSmallHalf = max(*left1, *left2);
+            }
+            if (right1 == nullptr || right2 == nullptr) {
+                smallestInBigHalf = right1 == nullptr ? *right2 : *right1;
+            }
+            else {
+                smallestInBigHalf = min(*right1, *right2);
+            }
+            result = (biggestInSmallHalf + smallestInBigHalf) / 2;
+        }
+
+        return result;
+    }
+};
 ```
