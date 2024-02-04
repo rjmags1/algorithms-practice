@@ -38,7 +38,7 @@ Output: [0,1]
 
 Follow-up: Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?
 
-## Solution
+## Solution 1 - Python
 ```
 # Time: O(n)
 # Space: O(n)
@@ -56,3 +56,32 @@ class Solution:
 - Order matters because we are being asked to return indices. Otherwise, could achieve `O(n * log(n))` time, `O(1)` space with sorting and two pointer approach.
 - Note how the check to see if a particular number is in `seen` occurs before the current number is added to `seen`. Otherwise we could accidentally return the same index twice if `2 * nums[i] == target`.
 - It is OK to overwrite hash table entries for a particular number if there are multiple instances of it in the array because the overwrite occurs after we check for `diff` in `seen`.
+
+## Solution 2 - C++
+```
+#include <vector>
+#include <unordered_map>
+
+using namespace std;
+
+// Time: O(n)
+// Space: O(n)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> seen = { };
+        vector<int> result = { };
+        for (int i = 0; i < nums.size(); i++) {
+            auto j = seen.find(target - nums[i]);
+            if (j != seen.end()) {
+                result.push_back(i);
+                result.push_back(j->second);
+                break;
+            }
+            seen[nums[i]] = i;
+        }
+
+        return result;
+    }
+};
+```
