@@ -30,7 +30,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 - `0 <= Node.val <= 9`
 - It is guaranteed that the list represents a number that does not have leading zeros.
 
-## Solution
+## Solution - Python
 ```
 # Definition for singly-linked list.
 # class ListNode:
@@ -66,3 +66,45 @@ class Solution:
 - Use of `sentinel` generally useful in Linked List problems where you are generating a new LL or modifying an existing one and need to keep track of a head node that could potentially be different in the result than it was in the input.
 - Don't forget to carry when `l1.val` and `l2.val` have double digit sum.
 - Don't miss edge case where `l1` or `l2` are both `None` but `carry == 1`, i.e. `5 + 5 = 10`.
+
+## Solution - C++
+```
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+using namespace std;
+
+// Time: O(max(m, n))
+// Space: O(max(m, n))
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* sentinel = new ListNode();
+        ListNode* curr = sentinel;
+        bool carry = false;
+        while (l1 != nullptr || l2 != nullptr || carry) {
+            int v1 = l1 == nullptr ? 0 : l1->val;
+            int v2 = l2 == nullptr ? 0 : l2->val;
+            int digitSum = v1 + v2 + (carry ? 1 : 0);
+
+            ListNode* nxt = new ListNode(digitSum % 10);
+            curr->next = nxt;
+            curr = nxt;
+
+            l1 = l1 == nullptr ? l1 : l1->next;
+            l2 = l2 == nullptr ? l2 : l2->next;
+            carry = digitSum > 9;
+        }
+
+        return sentinel->next;
+    }
+};
+```
