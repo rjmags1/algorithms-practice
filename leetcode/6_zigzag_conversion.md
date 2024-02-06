@@ -48,7 +48,7 @@ Output: "A"
 - `s` consists of English letters (lower-case and upper-case), `','` and `'.'`.
 - `1 <= numRows <= 1000`
 
-## Solution 1
+## Solution 1 - Python
 ```
 # Time: O(n + m)
 # Space: O(n + m)
@@ -74,7 +74,7 @@ class Solution:
 #### Notes
 - More intuitive IMO but not as efficient as below... could have more rows than characters and end up allocating more empty row arrays than necessary.
 
-## Solution 2
+## Solution 2 - Python
 ```
 # Time: O(n)
 # Space: O(n)
@@ -99,3 +99,47 @@ class Solution:
 #### Notes
 - Good solution for familiarizing oneself with string/array iteration that does not proceed from one character to the next.
 - For the first and last rows, their characters appear at every `k * cycleLength` and `k * cycleLength + numRows - 1` index for `k = 0; k++;`, respectively; for all of the other rows, their characters at indices `(k * cycleLength) + r` for `k = 0; k++;` as well as `(k * cycleLength) - r` for `k = 1; k++;`.
+
+## Solution 1 - C++
+```
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+// Time: O(n)
+// Space: O(n)
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if (numRows == 1) return s;
+        
+        int n = s.size();
+        numRows = min(n, numRows);
+        vector<string> rows(numRows);
+        int k = 0;
+        bool down = true;
+        for (int i = 0; i < n; i++) {
+            rows[k].push_back(s[i]);
+            down ? k++ : k--;
+            if (down && k == numRows) {
+                k -= 2;
+                down = false;
+            }
+            else if (!down && k == -1) {
+                k += 2;
+                down = true;
+            }
+        }
+
+        stringstream ss;
+        for (string row : rows) {
+            ss << row;
+        }
+
+        return ss.str();
+    }
+};
+```
