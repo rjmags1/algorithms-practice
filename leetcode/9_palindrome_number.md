@@ -27,7 +27,7 @@ Explanation: From left to right, it reads -121. From right to left, it becomes 1
 
 Follow-up: Could you solve it without converting the integer to a string?
 
-## Solution
+## Solution - Python
 ```
 # Time: O(log(n))
 # Space: O(1)
@@ -45,3 +45,27 @@ class Solution:
 
 ## Notes
 - There is another solution where only half of the original number's digits get reversed, but it requires handling several other edge cases while only reducing the above solution's time complexity by a constant factor (half).
+
+## Solution - C++
+
+```
+using namespace std;
+
+// Time: O(log(n))
+// Space: O(1)
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if (x < 0) return false;
+
+        long original = x;
+        long reversed = 0;
+        while (x > 0) {
+            reversed = reversed * 10 + x % 10;
+            x /= 10;
+        }
+
+        return reversed == original;
+    }
+};
+```
