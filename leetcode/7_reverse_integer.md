@@ -31,7 +31,7 @@ Output: 21
 
 - <code>-2<sup>31</sup> <= x <= 2<sup>31</sup> - 1</code>
 
-## Solution
+## Solution - Python
 ```
 # Time: O(log(n))
 # Space: O(1)
@@ -62,3 +62,42 @@ class Solution:
 
 ## Notes
 - This question gets a lot of hate on LC but is good for learning about 32-bit vs. 64-bit environments, as well as how mod and floor can be used to manipulate integers as though they were a stack. Take special note of how we avoid overflow in a 32-bit environment, as well as reducing edge cases with a `neg` flag and conversion to absolute value.
+
+## Solution - C++
+
+```
+#include <limits.h>
+
+using namespace std;
+
+// Time: O(n)
+// Space: O(n)
+class Solution {
+public:
+    int reverse(int x) {
+        int maxIntLastDigit = INT_MAX % 10;
+        int minIntLastDigit = maxIntLastDigit + 1;
+        int intLimitsFloored = INT_MAX / 10;
+
+        if (x == INT_MIN || x == INT_MAX || x == 0) return 0;
+
+        bool neg = x < 0;
+        if (x < 0) x = -x;
+        int result = 0;
+        while (x > 0) {
+            int digit = x % 10;
+            if (result >= intLimitsFloored) {
+                if (result > intLimitsFloored || 
+                    (neg ? digit > minIntLastDigit : digit > maxIntLastDigit)
+                ) {
+                    return 0;
+                }
+            }
+            result = result * 10 + digit;
+            x /= 10;
+        }
+
+        return neg ? -result : result;
+    }
+};
+```
