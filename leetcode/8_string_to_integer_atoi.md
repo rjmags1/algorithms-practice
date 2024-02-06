@@ -69,7 +69,7 @@ Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
 - `0 <= s.length <= 200`
 - `s` consists of English letters (lower-case and upper-case), digits (`0-9`), `' '`, `'+'`, `'-'`, and `'.'`. 
 
-## Solution
+## Solution - Python
 ```
 MAX_INT = 2 ** 31 - 1
 ABS_MIN_INT = 2 ** 31
@@ -165,3 +165,99 @@ class Solution:
 ## Notes
 - Could naively try and solve this with complicated series of nested if-else statements according to the prompt, but it is much cleaner to go with an OOP approach, implementing a DFA (deterministic finite automaton AKA state machine). 
 - I named the state machine above a Parser but it does what a DFA does: navigate between a set of predefined states based on some input, altering data/variables along the way.
+
+## Solution - C++
+```
+#include <limits.h>
+
+using namespace std;
+
+class Solution {
+public:
+    int myAtoi(string s) {
+        int result = 0;
+        int sign = 1;
+        States state = Start;
+        int i = 0;
+        int n = s.size();
+        int intLimitsFloored = INT_MAX / 10;
+        while (i < n && state != End) {
+            char c = s[i++];
+            switch (state) {
+                case Start:
+                    if (c == ' ') {
+                        state = Whitespace;
+                    }
+                    else if (c >= '0' && c <= '9') {
+                        result = c - '0';
+                        state = Digit;
+                    }
+                    else if (c == '+' || c == '-') {
+                        sign = c == '+' ? 1 : -1;
+                        state = Sign;
+                    }
+                    else {
+                        state = End;
+                    }
+                    break;
+                case Sign:
+                    if (c >= '0' && c <= '9') {
+                        result = result * 10 + (c - '0');
+                        state = Digit;
+                    }
+                    else {
+                        state = End;
+                    }
+                    break;
+                case Whitespace:
+                    if (c >= '0' && c <= '9') {
+                        result = result * 10 + (c - '0');
+                        state = Digit;
+                    }
+                    else if (c == '+' || c == '-') {
+                        sign = c == '+' ? 1 : -1;
+                        state = Sign;
+                    }
+                    else if (c != ' ') {
+                        state = End;
+                    }
+                    break;
+                case Digit:
+                    if (c >= '0' && c <= '9') {
+                        result = result * 10 + (c - '0');
+                        state = Digit;
+                    }
+                    else {
+                        state = End;
+                    }
+                    break;
+            }
+
+            if (result >= intLimitsFloored && i < n) {
+                char nextc = s[i++];
+                if (nextc < '0' || nextc > '9') {
+                    break;
+                }
+                if (result > intLimitsFloored || (sign == -1 ? nextc >= '8' : nextc >= '7')) {
+                    return sign == -1 ? INT_MIN : INT_MAX;
+                }
+                result = result * 10 + (nextc - '0');
+                if (i < n and s[i] >= '0' && s[i] <= '9') {
+                    return sign == -1 ? INT_MIN : INT_MAX;
+                }
+            }
+        }
+
+        return result * sign;
+    }
+
+private:
+    enum States {
+        Start,
+        Sign,
+        Whitespace,
+        Digit,
+        End
+    };
+};
+```
