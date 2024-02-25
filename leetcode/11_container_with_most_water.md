@@ -31,7 +31,7 @@ Output: 1
 - <code>2 <= n <= 10<sup>5</sup></code>
 - <code>0 <= height[i] <= 10<sup>4</sup></code>
 
-## Solution
+## Solution - Python
 ```
 # Time: O(n) (one-pass)
 # Space: O(1)
@@ -57,3 +57,27 @@ class Solution:
 ## Notes
 - This is really a dp problem, that can be solved with two dp arrays that track, respectively, the largest height we have seen LTR and the largest height we have seen RTL. The constant space one-pass approach shown above is more greedy in nature and follows from the two array approach, observing that the only rectangles worth considering are the ones with the next biggest possible area and next biggest possible heights.
 - In other words, to solve the problem, we use fact that we can tell the amount of water that can fit inside a given subrectangle based on `dist`, `leftmax`, and `rightmax`, and iterate outside in in a greedy fashion.
+
+## Solution - C++
+```
+#include <vector>
+#include <algorithm>
+
+// Time: O(n)
+// Space: O(1)
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int result = 0;
+        int l = 0;
+        int r = height.size() - 1;
+        while (l < r) {
+            int water = (r - l) * min(height[l], height[r]);
+            result = max(result, water);
+            height[l] < height[r] ? l++ : r--;
+        }
+
+        return result;
+    }
+};
+```

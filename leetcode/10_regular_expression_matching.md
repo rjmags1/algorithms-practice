@@ -41,7 +41,7 @@ Explanation: ".*" means "zero or more (*) of any character (.)".
 - It is guaranteed for each appearance of the character `'*'`, there will be a previous valid character to match.
 
 
-## Solution
+## Solution - Python
 ```
 # Time: O(m * n)
 # Space: O(m * n)
@@ -65,3 +65,65 @@ class Solution:
 ## Notes
 - Good example of top-down recursive solution that can be optimized with caching. We check each possible pair of text and pattern indices once with appropriate caching. At each representative subpattern and substring we can make a determination about if the current subpattern matches the current substring based on `i`, `j`, and the results of forward calls down the recursive call tree. 
 - Again, note how the match status of a particular substring and subpattern depends on if there are relevant matches within the rest of the substring and subpattern (forward recursive calls). We must know about the match status of smaller substrings and subpatterns that end at the end of the input string and pattern in order to determine the match status of larger substrings and subpatterns that end at the end of the input string and pattern.
+
+## Solution - C++
+
+```
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+class Solution {
+private:
+    unordered_map<string, bool> memo;
+    int m;
+    int n;
+    
+public:
+    // Time: O(n * m)
+    // Space: O(n * m)
+    bool isMatch(string s, string p) {
+        /*
+        base cases:
+            - si == m, pi < n -> rest of p is *
+            - si == m, pi == n -> true
+            - si < m, pi == n -> 
+                if rest of string is p[pi - 2] and p[pi - 1] == '*'
+        */
+        m = s.length();
+        n = p.length();
+        return rec(0, 0, s, p);
+    }
+
+    bool rec(int si, int pi, string& s, string& p) {
+        string key = to_string(si) + "," + to_string(pi);
+        if (memo.contains(key)) {
+            return memo[key];
+        }
+
+        if (pi == n) {
+            if (si == m) {
+                memo[key] = true;
+            }
+            else {
+                memo[key] = n > 1 && p[pi - 1] == '*' && p[pi - 2] == s[si] && rec(si + 1, pi, s, p);
+            }
+        }
+        else if (si == m) {
+            memo[key] = pi < n - 1 && p[pi + 1] == '*' && rec(si, pi + 2, s, p);
+        }
+        else {
+            bool match = p[pi] == '.' || s[si] == p[pi];
+            if (pi < n - 1 && p[pi + 1] == '*') {
+                memo[key] = rec(si, pi + 2, s, p) || (match && rec(si + 1, pi, s, p));
+            }
+            else {
+                memo[key] = match && rec(si + 1, pi + 1, s, p);
+            }
+        }
+
+        return memo[key];
+    }
+}
+```
