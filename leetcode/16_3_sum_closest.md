@@ -57,3 +57,39 @@ class Solution:
 
 ## Notes
 - We can break when we find a triplet whose sum equals `target`, because the prompt is asking us for a single answer instead of all possible answers.
+
+## Solution - C++
+
+```
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+
+// BF -> every triplet with triple for-loop
+// n space, n^2 time -> sort + reduce to 2sum
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        vector<int> sorted(nums);
+        sort(sorted.begin(), sorted.end());
+        int n = nums.size();
+        int result = sorted[0] + sorted[1] + sorted[2];
+        for (int i = 0; i < n - 2; i++) {
+            int j = i + 1;
+            int k = n - 1;
+            while (j < k) {
+                int sum = sorted[i] + sorted[j] + sorted[k];
+                if (abs(target - sum) < abs(target - result)) {
+                    result = sum;
+                }
+                if (sum == target) return target;
+                sum < target ? j++ : k--;
+            }
+        }
+
+        return result;
+    }
+};
+```
+
+- Shallow copy (ok because `vector<int>`) of `&nums` to not mutate ref input, using copy constructor
