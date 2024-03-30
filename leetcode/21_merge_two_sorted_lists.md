@@ -69,3 +69,51 @@ class Solution:
 
 ## Notes
 - Sentinel simplifies edge cases where `list1` and `list2` heads have same value, and makes implementation simpler by simply allowing us to add the next smallest node to the tail of the LL with sentinel as the first node.
+
+## Solution - C++
+
+```
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if (list1 == nullptr || list2 == nullptr) {
+            return list1 == nullptr ? list2 : list1;
+        }
+
+        ListNode* result = list1->val <= list2->val ? list1 : list2;
+        ListNode* p1 = list1;
+        ListNode* p2 = list2;
+        while (p1 != nullptr && p2 != nullptr) {
+            ListNode* temp;
+            if (p1->val <= p2->val) {
+                temp = p1;
+                while (temp->next != nullptr && temp->next->val <= p2->val) {
+                    temp = temp->next;
+                }
+                p1 = temp->next;
+                temp->next = p2;
+            }
+            else {
+                temp = p2;
+                while (temp->next != nullptr && temp->next->val < p1->val) {
+                    temp = temp->next;
+                }
+                p2 = temp->next;
+                temp->next = p1;
+            }
+        }
+
+        return result;
+    }
+};
+```

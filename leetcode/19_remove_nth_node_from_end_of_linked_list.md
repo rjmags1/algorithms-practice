@@ -65,3 +65,49 @@ class Solution:
 ## Notes
 - Sentinel node simplifies edge case where `head` is the <code>n<sup>th</sup></code> node from the end.
 - Feeler pointer allows us to only traverse the full LL once.
+
+## Solution - C++
+
+```
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+ // Time: O(n)
+ // Space: O(1)
+ // No memory leak
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* p1 = head;
+        ListNode* p2 = nullptr;
+        int distance = 0;
+        while (p1 != nullptr) {
+            p1 = p1->next;
+            if (distance == n) {
+                p2 = p2 == nullptr ? head : p2->next;
+            }
+            else distance++;
+        }
+        if (p2 == nullptr) {
+            ListNode* result = head->next;
+            delete head;
+            return result;
+        }
+        ListNode* gone = p2->next;
+        p2->next = p2->next->next;
+        delete gone;
+        return head;
+    }
+};
+```
+
+## Notes
+- A lot of the c++ solutions on leetcode have memory leaks.

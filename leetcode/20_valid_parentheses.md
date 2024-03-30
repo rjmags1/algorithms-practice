@@ -62,3 +62,37 @@ class Solution:
 
 ## Notes
 - Need to be careful to check for empty stack before popping, as well as once we have iterated over the entire string.
+
+## Solution - C++
+
+```
+#include <stack>
+
+// Time: O(n)
+// Space: O(n)
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        for (char c : s) {
+            if (c == ')') {
+                if (!st.empty() && st.top() == '(') st.pop();
+                else return false;
+            }
+            else if (c == ']') {
+                if (!st.empty() && st.top() == '[') st.pop();
+                else return false;
+            }
+            else if (c == '}') {
+                if (!st.empty() && st.top() == '{') st.pop();
+                else return false;
+            }
+            else {
+                st.push(c);
+            }
+        }
+
+        return st.empty();
+    }
+};
+```
