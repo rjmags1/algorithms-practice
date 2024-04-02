@@ -109,3 +109,53 @@ class Solution:
 
 ## Notes
 - This approach is superior to previous because we do not need an auxiliary data structure to build the result. Instead, we build the result in place by repeatedly iterating over `lists`, merging smaller merged LLs in a divide and conquer fashion.
+
+## Solution - C++
+
+```
+#include <queue>
+#include <vector>
+#include <utility>
+#include <greater>
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode* sentinel = new ListNode(-1);
+        ListNode* curr = sentinel;
+
+        priority_queue<
+            pair<int, ListNode*>, 
+            vector<pair<int, ListNode*>>, 
+            greater<pair<int, ListNode*>>
+        > h;
+        for (auto n : lists) {
+            if (n != nullptr) {
+                h.push({n->val, n});
+            }
+        }
+
+        while (!h.empty()) {
+            ListNode* t = h.top().second;
+            h.pop();
+            if (t->next != nullptr) {
+                h.push({t->next->val, t->next});
+            }
+            curr->next = t;
+            curr = t;
+        }
+
+        return sentinel->next;
+    }
+};
+```
