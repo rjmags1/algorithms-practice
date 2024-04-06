@@ -51,3 +51,39 @@ class Solution:
 ## Notes
 - Go pair by pair through the LL, swapping the pair order.
 - Be careful about advancing pointers after swapping `p1` and `p2`.
+
+## Solution - C++
+
+```
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return head;
+        }
+
+        ListNode* left = head;
+        ListNode* curr = head->next;
+        ListNode* result = curr;
+        while (curr != nullptr) {
+            if (curr->next == nullptr) {
+                curr->next = left;
+                left->next = nullptr;
+                return result;
+            }
+            ListNode* right = curr->next;
+            curr->next = left;
+            if (right->next != nullptr) {
+                left->next = right->next;
+            }
+            else {
+                left->next = right;
+            }
+            left = right;
+            curr = right->next;
+        }
+
+        return result;
+    }
+};
+```

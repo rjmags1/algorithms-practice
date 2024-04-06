@@ -72,3 +72,40 @@ class Solution:
 ## Notes
 - This problem is tricky to solve iteratively because it is easy to miss edge cases related to not reversing the last group if there are less than `k` nodes in it, as well as correctly splicing out k-groups and then reinserting them after reversal.
 - Again, using `sentinel` in a LL problem helps us avoid complicated logic involving capturing the head of the result, which in this case is `newHead` of the first k-group.
+
+## Solution - C++
+
+```
+class Solution {
+public:
+    int count(ListNode* head) {
+        int n = 0;
+        while (head != nullptr) {
+            head = head->next;
+            n++;
+        }
+        return n;
+    }
+
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        int n = count(head);
+        if (n < k) {
+            return head;
+        }
+
+        int x = k;
+        ListNode* next = nullptr;
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while (x-- > 0) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head->next = reverseKGroup(next, k);
+        return prev;
+    }
+};
+```

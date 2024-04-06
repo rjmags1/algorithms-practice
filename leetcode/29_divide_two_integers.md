@@ -105,3 +105,39 @@ class Solution:
 
 ## Notes
 - Instead of storing all of the doubles of `divisor`, we can use left bitshifting to generate the first double of `divisor` greater than `dividend`, and then right bitshift back down.
+
+## Solution - C++
+
+```
+#include <climits>
+#include <cstdlib>
+
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if (dividend == INT_MIN && divisor == -1) return INT_MAX;
+
+        bool neg = (dividend < 0 or divisor < 0) 
+            && !(dividend < 0 && divisor < 0);
+        long mul = 1;
+        long dd = labs(static_cast<long>(dividend));
+        long dv = labs(static_cast<long>(divisor));
+        long curr = dv;
+        while (curr <= dd) {
+            curr <<= 1;
+            mul <<= 1;
+        }
+        long result = 0;
+        while (dd >= dv) {
+            if (dd >= curr) {
+                dd -= curr;
+                result += mul;
+            }
+            curr >>= 1;
+            mul >>= 1;
+        }
+
+        return neg ? -result : result;
+    }
+};
+```
