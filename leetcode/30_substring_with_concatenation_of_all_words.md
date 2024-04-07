@@ -107,3 +107,93 @@ class Solution:
 ## Notes
 - This problem is hard if you haven't done many sliding window problems before. Coming up with the `scan` function alone is tricky, because it is important to correctly track the change in `correctFreqs` whenever a new word from `words` is added or removed from `have`. It is also tricky to figure out how the window should expand and shrink depending on if `curr` is not a word in `words`, if `curr` is in `words` but is excessively present in the current window, as well as when `correctFreqs == needCorrectFreqs`.
 - Coming up with the `scan` function is the hardest part of this problem, but it is frustrating if you get to that point (like I did), and then realize that you haven't handled cases where our input `s` has words in `words` at indices in `s` indivisible by `wordLength`. To efficiently consider all possible windows containing the desired permutations of `words`, all we need to do is start our call to `scan` at each index offset that could generate a unique window during `scan`ning. We don't want to end up considering the same windows twice in successive calls to `scan`.
+
+## Solution - C++
+
+```
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <string_view>
+
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        m = s.size();
+        n = words.size();
+        wlen = words[0].size();
+        sslen = wlen * n;
+        freqs.clear();
+        for (auto& w : words) {
+            freqs[w]++;
+        }
+
+        vector<int> result;
+        for (int start = 0; start < wlen; start++) {
+            scan(start, result, s);
+        }
+
+        return result;
+    }
+
+private:
+    int m, n, wlen, sslen;
+    unordered_map<string_view, int> freqs;
+
+    void scan(int start, vector<int>& result, string& s) {
+        int incorrectFreqs = freqs.size();
+        unordered_map<string_view, int> need = freqs;
+        int prevStart = start;
+        for (int stop = start + wlen; stop < m + 1; stop += wlen) {
+            int currStart = stop - wlen;
+            string_view curr(s.data() + currStart, stop - currStart);
+            if (!need.contains(curr)) {
+                for (int i = prevStart; i < currStart; i += wlen) {
+                    string_view removed(s.data() + i, wlen);
+                    need[removed]++;
+                    if (need[removed] == 0) {
+                        incorrectFreqs--;
+                    }
+                    else if (need[removed] == 1) {
+                        incorrectFreqs++;
+                    }
+                }
+                prevStart = stop;
+                continue;
+            }
+
+            need[curr]--;
+            if (need[curr] == -1) {
+                incorrectFreqs++;
+                while (need[curr] == -1) {
+                    string_view removed(s.data() + prevStart, wlen);
+                    need[removed]++;
+                    if (need[removed] == 0) {
+                        incorrectFreqs--;
+                    }
+                    else if (need[removed] == 1) {
+                        incorrectFreqs++;
+                    }
+                    prevStart += wlen;
+                }
+                continue;
+            }
+
+            if (need[curr] == 0) {
+                incorrectFreqs--;
+            }
+            if (incorrectFreqs == 0) {
+                result.push_back(prevStart);
+                string_view removed(s.data() + prevStart, wlen);
+                need[removed]++;
+                incorrectFreqs++;
+                prevStart += wlen;
+            }
+        }
+    }
+};
+```
+
+## Notes
+- 12ms first sub, beats 99%
+- Many non-official solutions say they use correct sliding window technique, when in fact they do not.
