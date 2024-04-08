@@ -75,3 +75,28 @@ class Solution:
 - This problem can be tricky to solve without having seen it before. But it can be done: write out all permutations for a short example in lexicographical order and try to notice a pattern.
 - To implement this, you need to realize that the next greater permutation will always have the first decreasing element RTL (at index `i`) swapped with the smallest element greater than it to the right (at index `j`). After that, all we need to do is sort the numbers to the right of `i` in ascending order and we will have our answer.
 - However, sorting will result in non-constant memory usage. So we need to find a way to get the elements to the right of index `i` in ascending order without simply sorting them. Recall that when we searched for `i`, we were looking for the first decreasing element RTL, so that means all of the numbers we passed while doing that search were in descending order LTR (ascending order RTL). And since the element at `j` is the smallest element greater than the element at `i`, swapping them does not disrupt the descending order LTR of elements to the right of `i`. All of that to say, to get the numbers to the right of `i` sorted in ascending order, all we need to do is `reverseRange(i + 1, n - 1)`.
+
+## Solution - C++
+
+```
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        int k;
+        for (k = n - 2; k >= 0; k--) {
+            if (nums[k] < nums[k + 1]) break;
+        }
+        if (k == -1) {
+            reverse(nums.begin(), nums.end());
+            return;
+        }
+        int j;
+        for (j = n - 1; j > k; j--) {
+            if (nums[j] > nums[k]) break;
+        }
+        swap(nums[k], nums[j]);
+        reverse(nums.begin() + k + 1, nums.end());
+    }
+};
+```
