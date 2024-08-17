@@ -99,3 +99,55 @@ class Solution:
 ## Notes
 - This approach is a lot cleaner, and makes a lot of sense once you have seen the solution, but it is hard to come up with the conceptual strategy without prior exposure.
 - The main idea is that, when iterating LTR, once we have seen more closing parens than opening parens, it is impossible for us to match the excess closing parens. Similarly, when iterating RTL, once we have seen more opening parens than closing parens, it will be impossible to match the excess opening ones.
+
+## Solution 3 - C++
+```
+// Time: O(n)
+// Space: O(1)
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        int n = s.size();
+        int open = 0;
+        int close = 0;
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '(') {
+                open++;
+            }
+            else {
+                close++;
+            }
+
+            if (close > open) {
+                open = 0;
+                close = 0;
+            }
+            else if (open == close) {
+                result = max(result, close * 2);
+            }
+        }
+
+        open = 0;
+        close = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            if (s[i] == '(') {
+                open++;
+            }
+            else {
+                close++;
+            }
+
+            if (open > close) {
+                open = 0;
+                close = 0;
+            }
+            else if (open == close) {
+                result = max(result, close * 2);
+            }
+        }
+
+        return result;
+    }
+};
+```

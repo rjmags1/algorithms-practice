@@ -55,3 +55,31 @@ class Solution:
 ## Notes
 - We do an extra `O(n)` pass to obtain the length of the shortest string in the array for vertical scanning.
 - Vertical scanning is useful in a problem like this where every word in the input array must have the same prefix for a given prefix to be a valid answer. It allows us to avoid extra comparisons between two strings in the input that may have a longer common prefix than the answer.
+
+## Solution - C++
+```
+// Time: O(c) where c is total chars in strs
+// Space: O(1)
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int k = 0;
+        for (int i = 1; i < strs.size(); i++) {
+            if (strs[i].size() < strs[k].size()) {
+                k = i;
+            }
+        }
+
+        for (int i = 0; i <= strs[k].size(); i++) {
+            char c = strs[k][i];
+            for (const auto s : strs) {
+                if (s[i] != c) {
+                    return strs[k].substr(0, i);
+                }
+            }
+        }
+
+        return strs[k];
+    }
+};
+```

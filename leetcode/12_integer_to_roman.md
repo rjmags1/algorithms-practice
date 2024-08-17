@@ -51,7 +51,7 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 - `1 <= num <= 3999`
 
-## Solution
+## Solution - Python
 ```
 # Time: O(1)
 # Space: O(1)
@@ -72,3 +72,25 @@ class Solution:
 
 ## Notes
 - We cannot avoid iterating with a certain `val` more than once because we need to have a character instance in the result every time it is the char of the largest `val` in `vals` that fits in the rest of `num`, as we iterate left to right over descending sorted `vals`.
+
+## Solution - C++
+```
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    string intToRoman(int num) {
+        int vals[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        string symbols[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        string result = "";
+        for (int i = 0; i < sizeof(vals) / sizeof(int); i++) {
+            while (num >= vals[i]) {
+                result.append(symbols[i]);
+                num -= vals[i];
+            }
+        }
+
+        return result;
+    }
+}
+```
