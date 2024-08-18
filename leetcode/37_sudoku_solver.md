@@ -94,3 +94,64 @@ class Solution:
 ## Notes
 - This is a classic backtracking problem. We cut down on some extra runtime with the `rows`, `cols`, and `grids` data structures, which allow us to do direct lookup on possible numbers (as opposed to iterating to check if they are already present in a row, column, or grid).
 - Though the time is constant because we are only dealing with `9x9` sudoku boards for this problem, we could express it as <code>O((n!)<sup>n</sup>)</code>, where `n == len(board) == len(board[0])`. For each row, there are `n!` possible configurations, and there are `n` rows.
+
+
+## Solution - C++
+
+```
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    void solveSudoku(vector<vector<char>>& board) {
+        bool rows[9][9] { };
+        bool cols[9][9] { };
+        bool grids[9][9] { };
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                    int val = board[i][j] - '1';
+                    rows[i][val] = true;
+                    cols[j][val] = true;
+                    grids[(i / 3) * 3 + (j / 3)][val] = true;
+                }
+            }
+        }
+        solve(board, rows, cols, grids, 0, 0);
+    }
+
+private:
+    bool solve(vector<vector<char>>& board, bool (&rows)[9][9], bool (&cols)[9][9], bool (&grids)[9][9], int i, int j) {
+        if (i == 9) {
+            return true;
+        }
+        if (j == 9) {
+            return solve(board, rows, cols, grids, i + 1, 0);
+        }
+        if (board[i][j] != '.') {
+            return solve(board, rows, cols, grids, i, j + 1);
+        }
+
+        for (char c = '1'; c <= '9'; c++) {
+            int val = c - '1';
+            if (rows[i][val] || cols[j][val] || grids[(i / 3) * 3 + (j / 3)][val]) {
+                continue;
+            }
+
+            board[i][j] = c;
+            rows[i][val] = true;
+            cols[j][val] = true;
+            grids[(i / 3) * 3 + (j / 3)][val] = true;
+            if (solve(board, rows, cols, grids, i, j + 1)) {
+                return true;
+            }
+            board[i][j] = '.';
+            rows[i][val] = false;
+            cols[j][val] = false;
+            grids[(i / 3) * 3 + (j / 3)][val] = false;
+        }
+
+        return false;
+    }
+};
+```

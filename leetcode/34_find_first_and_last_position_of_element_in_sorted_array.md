@@ -73,3 +73,60 @@ class Solution:
 
 ## Notes
 - Just binary search with a couple extra conditions that allow us to find the left and right bounds for duplicate targets.  
+
+
+## Solution - C++
+
+```
+// Time: O(log(n))
+// Space: O(1)
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> result { -1, -1 };
+        result[0] = getBound(nums, target, true);
+        if (result[0] == -1) {
+            return result;
+        }
+        
+        result[1] = getBound(nums, target, false);
+        return result;
+    }
+
+private:
+    int getBound(vector<int>& nums, int target, bool leftBound) {
+        int n = nums.size();
+        int i = 0;
+        int j = n - 1;
+        while (i <= j) {
+            int k = (i + j) / 2;
+            if (nums[k] == target) {
+                if (leftBound) {
+                    if (k == 0 || nums[k] != nums[k - 1]) {
+                        return k;
+                    }
+                    else {
+                        j = k - 1;
+                    }
+                }
+                else {
+                    if (k == n - 1 || nums[k] != nums[k + 1]) {
+                        return k;
+                    }
+                    else {
+                        i = k + 1;
+                    }
+                }
+            }
+            else if (target < nums[k]) {
+                j = k - 1;
+            }
+            else {
+                i = k + 1;
+            }
+        }
+
+        return -1;
+    }
+};
+```

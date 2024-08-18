@@ -79,3 +79,37 @@ class Solution:
 ## Notes
 - The time and space complexity is constant because `n` and `m` will always be `9`.
 - We use some extra times using hash tables of sets as opposed to hash tables of arrays because of the extra hash, but arguably more idiomatic.
+
+
+## Solution - C++
+
+```
+// Time: O(1)
+// Space: O(1)
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        bool rows[9][9] { };
+        bool cols[9][9] { };
+        bool grids[9][9] { };
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] == '.') {
+                    continue;
+                }
+
+                int val = board[i][j] - '1';
+                if (rows[i][val] || cols[j][val] || grids[(i / 3) * 3 + (j / 3)][val]) {
+                    return false;
+                }
+                rows[i][val] = true;
+                cols[j][val] = true;
+                grids[(i / 3) * 3 + (j / 3)][val] = true;
+            }
+        }
+
+        return true;
+    }
+};
+
+```

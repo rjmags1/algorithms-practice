@@ -60,3 +60,37 @@ class Solution:
 
 ## Notes
 - The space and time complexities come from a non-trivial proof that is beyond the scope of an interview.
+
+
+## Solution - C++
+```
+// Time: O(4^(n / 3))
+// Space: O(4^(n / 3))
+class Solution {
+public:
+    string countAndSay(int n) {
+        string seq = "1";
+        string next;
+        for (int i = 2; i <= n; i++) {
+            next = "";
+            int m = seq.size();
+            int j = 0;
+            while (j < m) {
+                int k;
+                for (k = j + 1; k < m; k++) {
+                    if (seq[k] != seq[j]) {
+                        break;
+                    }
+                }
+                next.append(to_string(k - j));
+                next.push_back(seq[j]);
+                j = k;
+            }
+
+            seq = next;
+        }
+
+        return seq;
+    }
+};
+```

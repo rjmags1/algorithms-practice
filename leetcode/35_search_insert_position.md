@@ -56,3 +56,34 @@ class Solution:
 
 ## Notes
 - Binary search, notice how targets not present in input are pointed to by `i` at the end of the while loop.
+
+
+## Solution - C++
+
+```
+// Time: O(log(n))
+// Space: O(1)
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = nums.size();
+        int i = 0;
+        int j = n - 1;
+        while (i < j) {
+            int k = (i + j) / 2;
+            if (nums[k] == target) {
+                return k;
+            }
+
+            if (target < nums[k]) {
+                j = k - 1;
+            }
+            else {
+                i = k + 1;
+            }
+        }
+
+        return i == n || nums[i] >= target ? i : i + 1;
+    }
+};
+```
