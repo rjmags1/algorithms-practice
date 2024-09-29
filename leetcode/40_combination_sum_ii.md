@@ -110,3 +110,41 @@ class Solution:
 ## Notes
 - We do not need an auxiliary data structure for monitoring duplicate elements frequencies to avoid TLE; we can sort. Sorting will group all of the duplicate elements together, which allows us to avoid multiple recursive calls with a given frequency of a duplicated element.
 - In the above solution, each grouped-together duplicate element is added to `builder` as the first instance of that element in a combo once. This avoids multiple recursive calls with a given frequency of a duplicated element. I.e., if our candidates looks like so: <code>[..., x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, ...]</code>, we would generate a single combo for each possible frequency of x, like so: <code>[..., x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, ...]</code>, <code>[..., x<sub>2</sub>, x<sub>3</sub>, ...]</code>, and <code>[..., x<sub>3</sub>, ...]</code> (so long as these combos do not exceed target).
+
+## Solution - C++
+
+```
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<int> nums(candidates);
+        sort(nums.begin(), nums.end());
+        vector<int> combo { };
+        vector<vector<int>> result { };
+        rec(0, target, nums, combo, result);
+        return result;
+    }
+
+private:
+    void rec(int i, int target, vector<int>& nums, vector<int>& combo, vector<vector<int>>& result) {
+        if (target == 0) {
+            vector<int> validCombo(combo);
+            result.push_back(validCombo);
+            return;
+        }
+
+        for (int j = i; j < nums.size(); j++) {
+            if (j != i && nums[j] == nums[j - 1]) {
+                continue;
+            }
+
+            if (nums[j] > target) {
+                return;
+            }
+            combo.push_back(nums[j]);
+            rec(j + 1, target - nums[j], nums, combo, result);
+            combo.pop_back();
+        }
+    }
+};
+```

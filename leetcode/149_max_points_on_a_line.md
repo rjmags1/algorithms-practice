@@ -1,4 +1,4 @@
-# 149. Max Points on a Line
+# 149. Max Points on a Line - Hard
 
 Given an array of `points` where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
 

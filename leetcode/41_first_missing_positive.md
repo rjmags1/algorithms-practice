@@ -61,3 +61,38 @@ class Solution:
 - The main strategy for this problem is using indices as hash keys for seen numbers in the range of relevant missing positive numbers `[1, n]`. These are the relevant numbers to look for in `nums` for this problem because if all of those numbers are missing, the answer is simply `n + 1`. We mark a number in the range, `x`, as not missing by doing `nums[x - 1] *= -1`, once. If we see `x` more than once, we skip the sign-change step because that could make it seem like we haven't seen `x` if `x` occurs an even number of times in `nums`.
 - Before we can proceed with the main strategy, we need to do some preprocessing because our input can have non-positive numbers, which will ruin our proposed `O(1)` hashing strategy. The workaround for this in the above solution is to replace any non-positive numbers with `n + 1`, since this is beyond the range of possible answers that could occur in `nums` but is still positive, and so can be used in our proposed hashing strategy. 
 - After the main iteration, we simply return the incremented index of the first positive number in `nums`, or `n + 1` if there wasn't one.
+
+
+## Solution - C++
+```
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        // index 0 -> positive int 1, index 1 -> positive int 2
+        // index mapping with some edge cases
+        int n = nums.size();
+        for (int i = 0; i < n; i++) {
+            if (nums[i] < 1) {
+                nums[i] = n + 1;
+            }
+        }
+
+        for (auto num : nums) {
+            if (num < 0) {
+                num *= -1;
+            }
+            if (num <= n && nums[num - 1] > 0) {
+                nums[num - 1] *= -1;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+
+        return n + 1;
+    }
+};
+```

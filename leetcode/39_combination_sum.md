@@ -67,3 +67,34 @@ class Solution:
 ## Notes
 - For each candidate, there will never be more than `t/m` recursive calls as we build a combination sum using that number. The exponent in problems involving n-ary recursive call trees is always the max recursive call depth.
 - We could improve the runtime of this solution by adding recursive call tree pruning by postfix sums to `target - curr`.
+
+## Solution 
+
+```
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> result { };
+        vector<int> combo { };
+        rec(0, candidates, combo, result, target);
+        return result;
+    }
+
+private:
+    void rec(int i, vector<int>& nums, vector<int>& combo, vector<vector<int>>& result, int target) {
+        if (target == 0) {
+            vector<int> validCombo(combo);
+            result.push_back(validCombo);
+            return;
+        }
+
+        for (int j = i; j < nums.size(); j++) {
+            if (nums[j] <= target) {
+                combo.push_back(nums[j]);
+                rec(j, nums, combo, result, target - nums[j]);
+                combo.pop_back();
+            }
+        }
+    }
+};
+```
