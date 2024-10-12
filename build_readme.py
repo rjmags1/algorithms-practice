@@ -1,9 +1,9 @@
 import os
 
-asdf = os.listdir("./leetcode")
+solution_files = os.listdir("./leetcode")
 headers = []
 names = []
-for f in asdf:
+for f in solution_files:
     with open("./leetcode/" + f) as fi:
         headers.append(fi.readline()[1:].strip())
         names.append(fi.name[11:])
