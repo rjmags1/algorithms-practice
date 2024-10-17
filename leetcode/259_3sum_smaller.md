@@ -37,7 +37,7 @@ Output: 0
 
 ```
 # Time: O(n^2 * log(n))
-# Space: O(1)
+# Space: O(n) (timsort)
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
         nums.sort()
@@ -68,6 +68,8 @@ class Solution:
 ## Solution 2
 
 ```
+# Time: O(n^2)
+# Space: O(n) (timsort)
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
         nums.sort()
